@@ -1,17 +1,18 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { sequelize } from "../../database/database.js";
 
-export const Juzgado = sequelize.define(
-    "Juzgado", {
+export const GradoInstruccion = sequelize.define(
+    "GradoInstruccion", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        direccionJuzgado: {
-            type: DataTypes.STRING
+        nombre: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
         }
-
     },
     {
         freezeTableName: true,
