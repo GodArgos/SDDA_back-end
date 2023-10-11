@@ -6,6 +6,7 @@ import { Juez } from "../users/Juez.js";
 import { PersonaNatural } from "../users/PersonaNatural.js";
 import { Demandado } from "../users/Demandado.js";
 import { EstadoDemanda } from "../other/EstadoDemanda.js";
+import { FormularioIngreso } from "./FormularioIngreso.js";
 
 export const Demanda = sequelize.define(
     "Demanda", {
@@ -14,10 +15,11 @@ export const Demanda = sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        nro_solicitud: {
+        nro_demanda: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: true,
+            autoIncrement: true
         },
         fecha_emision: {
             type: DataTypes.DATEONLY,
@@ -70,5 +72,15 @@ Demanda .belongsTo(EstadoDemanda, {
 
 EstadoDemanda .hasMany(Demanda, {
     foreignKey: "estadoDemandaId",
+    sourceKey: "id"
+})
+
+FormularioIngreso .belongsTo(EstadoDemanda, {
+    foreignKey: "formularioId",
+    sourceKey: "id"
+})
+
+EstadoDemanda .hasMany(FormularioIngreso, {
+    foreignKey: "formularioId",
     sourceKey: "id"
 })
