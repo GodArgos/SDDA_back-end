@@ -8,6 +8,10 @@ export const FormSUNARP = sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
+        dni: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         nro_propiedades: {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -15,9 +19,6 @@ export const FormSUNARP = sequelize.define(
         nro_vehiculos: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        observaciones: {
-            type: DataTypes.STRING,
         }
     },
     {

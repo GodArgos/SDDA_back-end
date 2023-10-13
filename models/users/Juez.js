@@ -12,7 +12,7 @@ export const Juez = sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        user: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true

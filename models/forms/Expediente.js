@@ -17,9 +17,6 @@ export const Expediente = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: true
-        },
-        observaciones: {
-            type: DataTypes.STRING,
         }
     },
     {

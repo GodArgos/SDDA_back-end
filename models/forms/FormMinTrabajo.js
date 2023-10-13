@@ -8,6 +8,10 @@ export const FormMINTRABAJO = sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
+        dni: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         nom_lugar_trabajo: {
             type: DataTypes.STRING,
             allowNull: false
@@ -19,9 +23,6 @@ export const FormMINTRABAJO = sequelize.define(
         monto_ingreso: {
             type: DataTypes.FLOAT,
             allowNull: false
-        },
-        observaciones: {
-            type: DataTypes.STRING,
         }
     },
     {
