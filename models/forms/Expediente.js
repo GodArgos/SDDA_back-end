@@ -4,7 +4,7 @@ import { sequelize } from "../../database/database.js";
 // Foreign Keys
 import { FormRENIEC } from "./FormReniec.js";
 import { FormSUNARP } from "./FormSunarp.js";
-import { FormMINTRABAJO } from "./FormMinTrabajo";
+import { FormMINTRABAJO } from "./FormMinTrabajo.js";
 
 export const Expediente = sequelize.define(
     "Expediente", {
@@ -17,6 +17,10 @@ export const Expediente = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: true
+        },
+        dni: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {

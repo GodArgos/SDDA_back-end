@@ -75,12 +75,12 @@ EstadoDemanda .hasMany(Demanda, {
     sourceKey: "id"
 })
 
-FormularioIngreso .belongsTo(EstadoDemanda, {
+Demanda .belongsTo(FormularioIngreso, {
     foreignKey: "formularioId",
     sourceKey: "id"
 })
 
-EstadoDemanda .hasMany(FormularioIngreso, {
+FormularioIngreso .hasMany(Demanda, {
     foreignKey: "formularioId",
     sourceKey: "id"
 })

@@ -1,4 +1,6 @@
-class User extends Person {    
+import { Person } from "./Person.js";
+
+export class User extends Person {    
     constructor(dni, names, lastnames, sex, username, password, email){
         super(dni, names, lastnames, sex);
 
