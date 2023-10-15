@@ -1,8 +1,8 @@
 import { Op } from "sequelize";
 
-import { FormRENIEC } from "../../models/forms/FormReniec";
-import { FormSUNARP } from "../../models/forms/FormSunarp";
-import { FormMINTRABAJO } from "../../models/forms/FormMinTrabajo";
+import { FormRENIEC } from "../../models/forms/FormReniec.js";
+import { FormSUNARP } from "../../models/forms/FormSunarp.js";
+import { FormMINTRABAJO } from "../../models/forms/FormMinTrabajo.js";
 
 export class ExpedientController {
 

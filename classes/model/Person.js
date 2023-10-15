@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../../utils/Functions";
+import { capitalizeFirstLetter } from "../../utils/Functions.js";
 
 export class Person {
     constructor(dni, names, lastnames, sex) {

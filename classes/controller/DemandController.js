@@ -1,8 +1,8 @@
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
-import { Demandado } from "../../models/users/Demandado";
-import { EstadoDemanda } from "../../models/other/EstadoDemanda";
-import { FormularioIngreso } from "../../models/forms/FormularioIngreso";
+import { Demandado } from "../../models/users/Demandado.js";
+import { EstadoDemanda } from "../../models/other/EstadoDemanda.js";
+import { FormularioIngreso } from "../../models/forms/FormularioIngreso.js";
 
 export class DemandController {
 
