@@ -115,6 +115,9 @@ app.post("/modify-profile", async (req, res) => {
 });
 
 // Descargar pdf solicitud de demanda "PLANTILLA"
+app.post("/plantilla", (req, res) => {
+    res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l');
+});
 
 // Descargar pdf específico de solicitud
 
