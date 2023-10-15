@@ -1,5 +1,8 @@
+import { Op } from "sequelize";
+
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
+import { TypeUserController } from "./TypeUserController.js";
 import { ExpedientController } from "./ExpedientController.js";
 
 export class UserController {
@@ -49,12 +52,12 @@ export class UserController {
                     sexoId: NaturalPerson.sex,
                     expedienteId: userExpedient.id
                 });
-                
+
                 // Y retorna 1
                 return 200;
             }
             // Si no encuentra un expediente con el dni del usuario
-            else { 
+            else {
                 return 404;
             }
         }
@@ -63,26 +66,39 @@ export class UserController {
         }
     }
 
-    static async searchUser(_username, _password){
-        const userPerson = await PersonaNatural.findOne({
-            where: {
-                username: _username,
-                password: _password
-            }
-        });
+    static async searchUser(_username, _password) {
+        // Intenta buscar el usuario en la tabla PersonaNatural
+        let typeControl = TypeUserController();
+        const personaNatural = typeControl.searchForNPUser(_username, _password);
+        const juez = typeControl.searchForJudgeUser(_username, _password);
 
-        const userJudge = await Juez.findOne({
-            where: {
-                username: _username,
-                password: _password
-            }
-        });
-
-        if(userPerson){
-            return userPerson;
+        if (personaNatural) {
+            return personaNatural;
         }
-        else if(userJudge){
-            return userJudge;
+        else if (juez) {
+            return juez;
+        }
+        else {
+            return null;
+        }
+    }
+
+    static async modifyUser(updatedFields) {
+        let typeControl = TypeUserController();
+        const personaNatural = typeControl.searchForNPUser(updatedFields.username, updatedFields.password);
+        const juez = typeControl.searchForJudgeUser(updatedFields.username, updatedFields.password);
+
+        if (personaNatural) {
+            await PersonaNatural.update(updatedFields, {
+                fields: Object.keys(updatedFields).filter((field) => updatedFields[field] !== null)
+            });
+            return personaNatural;
+        }
+        else if (juez) {
+            await Juez.update(updatedFields, {
+                fields: Object.keys(updatedFields).filter((field) => updatedFields[field] !== null)
+            });
+            return juez;
         }
         else {
             return null;
