@@ -176,7 +176,7 @@ app.post("/search-expedient", async (req, res) => {
         else {
             return res.status(404).json({ error: "Expediente no encontrado." });
         }
-    }
+    }   
     catch (e) {
         res.send(e);
     }
