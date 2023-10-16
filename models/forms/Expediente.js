@@ -14,7 +14,7 @@ export const Expediente = sequelize.define(
             autoIncrement: true
         },
         nro_expediente: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },

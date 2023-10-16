@@ -1,11 +1,11 @@
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('LimaLadrillos', 17310202794, 2000, 'Registro de tres tardanzas injustificadas en el último mes.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('AndesTextiles', 72777002223, 1050, 'Reporte de conflicto laboral con un compañero de trabajo.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('Cuzco Café', 93931655275, 3000, 'Solicitud de licencia sin goce de haber por problemas de salud.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('Muebles Armando', 41691594935, 1500, 'Denuncia por condiciones inseguras en el lugar de trabajo.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('ParadiseTech', 13759457830, 4000, 'Reporte de ausencia sin previo aviso');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('IncasTours', 78372924038, 1050, 'Solicitud de cambio de área por inconvenientes con la gestión actual.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('Banco Inca del Perú', 22079222798, 4020, 'Reporte de acoso laboral.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('Pinturas Machu Picchu', 55531555200, 1050, 'Solicitud de reducción de jornada laboral por estudios.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('ArequipaAlpacas', 44533537279, 6000, 'Infracción por no cumplir con las normas de seguridad e higiene.');
-INSERT INTO FORMMINTRABAJO (NOMBRE_LUGAR_TRABAJO, RUC_LUGAR_TRABAJO, MONTO_INGRESO, OBSERVACIONES) VALUES ('NazcaNetworks', 62622112673, 1050, 'Reporte de baja productividad y rendimiento en el último trimestre.');
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('LimaLadrillos', 17310202794, 2000);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('AndesTextiles', 72777002223, 1050);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('Cuzco Café', 93931655275, 3000);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('Muebles Armando', 41691594935, 1500);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('ParadiseTech', 13759457830, 4000);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('IncasTours', 78372924038, 1050);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('Banco Inca del Perú', 22079222798, 4020);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('Pinturas Machu Picchu', 55531555200, 1050);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('ArequipaAlpacas', 44533537279, 6000);
+INSERT INTO FormMINTRABAJO (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('NazcaNetworks', 62622112673, 1050);
 

@@ -1,2 +1,4 @@
-INSERT INTO SEXO (NOMBRE) VALUES ('FEMENINO');
-INSERT INTO SEXO (NOMBRE) VALUES ('MASCULINO');
+INSERT INTO Sexo (nombre) VALUES ('Masculino');
+INSERT INTO Sexo (nombre) VALUES ('Femenino');
+INSERT INTO Sexo (nombre) VALUES ('Otro');
+
