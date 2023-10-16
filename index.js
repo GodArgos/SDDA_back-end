@@ -178,21 +178,13 @@ app.post("/modify-profile-judge", async (req, res) => {
     }
 });
 
-<<<<<<< Updated upstream
 // Descargar pdf solicitud de demanda "PLANTILLA"
 app.post("/plantilla", (req, res) => {
     res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l'); 
 });
 
 // Crear solicitud de demanda
-=======
-// Descargar pdf solicitud de demanda "PLANTILLA" YA ESTA
 
-
-
-
-
->>>>>>> Stashed changes
 
 // Descargar pdf específico de solicitud
 app.post('/upload', uploadMiddleware, uploadFile);
