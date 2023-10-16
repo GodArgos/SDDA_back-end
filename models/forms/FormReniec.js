@@ -25,8 +25,9 @@ export const FormRENIEC = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        nombreCompleto: {
+        nombrecompleto: {
             type: DataTypes.STRING,
+            
         },
         direccion: {
             type: DataTypes.STRING,

@@ -17,7 +17,7 @@ export const FormularioIngreso = sequelize.define(
             unique: true,
         },
         fecha_emision: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false
         },
         pdf_path: {

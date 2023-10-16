@@ -25,7 +25,7 @@ export const uploadFile = async (req, res) => {
 
         const link = result.secure_url; // <-- Aquí es donde se extrae el link
 
-        const dbResult = await insertFileLink(req.body, link);
+        const dbResult = await insertFileLink(req.body.id, link);
 
         //res.status(201).json(dbResult);
 

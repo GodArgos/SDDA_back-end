@@ -16,7 +16,7 @@ function getActualDate() {
     let year = date.getFullYear();
 
     // This arrangement can be altered based on how we want the date's format to appear.
-    let currentDate = `${day}-${month}-${year}`;
+    let currentDate = `${day}/${month}/${year}`;
 
     return currentDate;
 }
