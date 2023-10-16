@@ -1,6 +1,15 @@
 import { sequelize } from "./database/database.js";
 import express from "express";
 import cors from "cors";
+import { uploadFile } from './classes/controller/FormController.js'
+
+import { uploadMiddleware } from './classes/controller/FormController.js'
+
+
+//const express = require('express');
+//const { uploadFile, uploadMiddleware } = ('./classes/controller/FormController');
+
+
 
 const app = express()
 const port = process.env.PORT || 3001;
@@ -169,14 +178,27 @@ app.post("/modify-profile-judge", async (req, res) => {
     }
 });
 
+<<<<<<< Updated upstream
 // Descargar pdf solicitud de demanda "PLANTILLA"
 app.post("/plantilla", (req, res) => {
     res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l'); 
 });
 
 // Crear solicitud de demanda
+=======
+// Descargar pdf solicitud de demanda "PLANTILLA" YA ESTA
+
+
+
+
+
+>>>>>>> Stashed changes
 
 // Descargar pdf específico de solicitud
+app.post('/upload', uploadMiddleware, uploadFile);
+
+
+
 
 // Conseguir todas las solicitudes de demanda
 
