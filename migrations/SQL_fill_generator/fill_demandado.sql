@@ -1,29 +1,29 @@
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (45789011, 'Evelio Alonso', 'Quintana Barboza', 'Evelio Alonso Quintana Barboza', 'Av. Los Fresnos 110, La Molina, Lima', 1, 2);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (12345678, 'Juan', 'Perez', 'Juan Perez', 'Av. Arequipa 123, Lima', 1, 11);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (56890123, 'Sarita del Mar', 'Carrasco Ugarte', 'Sarita del Mar Carrasco Ugarte', 'Jr. Los Álamos 225, San Isidro, Lima', 2, 1);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (23456789, 'Ana', 'Gonzales', 'Ana Gonzales', 'Jr. Los Pinos 456, Lima', 2, 12);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (67901234, 'Nicanor', 'Vilchez Castañeda', 'Nicanor Vilchez Castañeda', 'Calle Los Pinos 334, Miraflores, Lima', 3, 2);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (34567890, 'Carlos', 'Vargas', 'Carlos Vargas', 'Calle Los Olivos 789, Lima', 3, 13);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (78901245, 'Dalia Maria', 'Mamani Rojas', 'Dalia Maria Mamani Rojas', 'Av. Los Eucaliptos 443, Surco, Lima', 2, 1);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (45678901, 'Maria', 'Torres', 'Maria Torres', 'Av. El Sol 345, Lima', 1, 14);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (89012356, 'Ulises Gabriel', 'Pajares Salcedo', 'Ulises Gabriel Pajares Salcedo', 'Jr. Los Cedros 554, San Borja, Lima', 1, 2);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (56789012, 'Luis', 'Lopez', 'Luis Lopez', 'Calle San Martin 678, Lima', 2, 15);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (90123467, 'Zarela', 'Oviedo Chávez', 'Zarela Oviedo Chávez', 'Calle Los Robles 696, Jesús María, Lima', 2, 1);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (67890123, 'Fernanda', 'Castillo', 'Fernanda Castillo', 'Av. Larco 901, Lima', 3, 16);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (01234578, 'Froilán José', 'Paredes Zúñiga', 'Froilán José Paredes Zúñiga', 'Av. Los Ángeles 787, Los Olivos, Lima', 1, 2);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (78901234, 'Eduardo', 'Ramirez', 'Eduardo Ramirez', 'Jr. Los Eucaliptos 123, Lima', 1, 17);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (12345689, 'Belinda Rosa', 'Castañeda Vera', 'Belinda Rosa Castañeda Vera', 'Av. El Sol 848, Cusco', 3, 1);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (89012345, 'Olga', 'Diaz', 'Olga Diaz', 'Calle Los Ficus 456, Chiclayo', 2, 18);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (23456790, 'Teódulo', 'Vargas Mendoza', 'Teódulo Vargas Mendoza', 'Calle San Pedro 914, Arequipa', 1, 2);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (90123456, 'Javier', 'Vega', 'Javier Vega', 'Av. Los Heroes 789, Puno', 3, 19);
 
-INSERT INTO Demandado (dni, nombres, apellidos, nombreCompleto, direccion, sexoId, expedienteId)
-VALUES (34567801, 'Yolanda Carmen', 'Quispe Valdivia', 'Yolanda Carmen Quispe Valdivia', 'Jr. Los Andes 158, Trujillo', 2, 1);
+INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
+VALUES (12345987, 'Sara', 'Rojas', 'Sara Rojas', 'Jr. Las Magnolias 101, Iquitos', 2, 20);

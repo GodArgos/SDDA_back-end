@@ -22,7 +22,7 @@ export const Demanda = sequelize.define(
             autoIncrement: true
         },
         fecha_emision: {
-            type: DataTypes.DATEONLY,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         descripcion: {

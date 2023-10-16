@@ -8,3 +8,14 @@ INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 1);
 INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 3);
 INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 3);
 INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (2, 2);
+
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 2);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (2, 1);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (4, 3);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (1, 0);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (5, 2);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (2, 2);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (0, 1);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 4);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (1, 1);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (2, 3);

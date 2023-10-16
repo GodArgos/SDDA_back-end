@@ -1,10 +1,29 @@
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (38752778, 'Luis', 'Bernales', 'Mendoza', 0016, 'lbernales@pj.gob.pe', 'lbernales', 2, 2);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (48573920, 'Maria', 'Gutierrez', 'Lopez', 0017, 'mgutierrez@pj.gob.pe', 'mgutierrez', 3, 1);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (57283910, 'Carlos Martin', 'Ramirez', 'Perez', 0018, 'cramirez@pj.gob.pe', 'cramirez', 4, 2);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (67584930, 'Ana Lucero', 'Torres', 'Vega', 0019, 'atorres@pj.gob.pe', 'atorres', 5, 1);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (78392010, 'Jorge', 'Castillo', 'Fernandez', 0020, 'jcastillo@pj.gob.pe', 'jcastillo', 6, 2);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (89201045, 'Rosa Maria', 'Mendoza', 'Garcia', 0021, 'rmendoza@pj.gob.pe', 'rmendoza', 7, 1);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (91028374, 'Juan Jose', 'Perez', 'Rodriguez', 0022, 'jperez@pj.gob.pe', 'jperez', 8, 2);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (10293847, 'Carmen', 'Sanchez', 'Reyes', 0023, 'csanchez@pj.gob.pe', 'csanchez', 9, 1);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (11203948, 'Roberto Gabriel', 'Morales', 'Gonzalez', 0024, 'rmorales@pj.gob.pe', 'rmorales', 10, 2);
-INSERT INTO JUEZ (DNI, NOMBRES, APELLIDOPATERNO, APELLIDOMATERNO, NRO_COLEGIATURA, CORREO, CONTRASENA, JUZGADO_ID, SEXO_ID) VALUES (12938475, 'Patricia', 'Alvarez', 'Salas', 0025, 'palvarez@pj.gob.pe', 'palvarez', 1, 1);
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_carlos', 'password123', 'Carlos', 'Fernandez', 'Carlos Fernandez', '87778512', 'JZ12345', 'carlos@email.com', 1, 1);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_ana', 'password456', 'Ana', 'Lopez', 'Ana Lopez', '75293393', 'JZ23456', 'ana@email.com', 2, 2);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_luis', 'password789', 'Luis', 'Ramirez', 'Luis Ramirez', '93130263', 'JZ34567', 'luis@email.com', 1, 3);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_maria', 'password012', 'Maria', 'Gonzales', 'Maria Gonzales', '24192181', 'JZ45678', 'maria@email.com', 2, 4);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_juan', 'password345', 'Juan', 'Martinez', 'Juan Martinez', '40430787', 'JZ56789', 'juan@email.com', 1, 5);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_rosa', 'password678', 'Rosa', 'Perez', 'Rosa Perez', '67059745', 'JZ67890', 'rosa@email.com', 2, 6);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_pedro', 'password901', 'Pedro', 'Castillo', 'Pedro Castillo', '92386901', 'JZ78901', 'pedro@email.com', 1, 7);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_lucia', 'password234', 'Lucia', 'Santos', 'Lucia Santos', '21518226', 'JZ89012', 'lucia@email.com', 2, 8);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_sergio', 'password567', 'Sergio', 'Gomez', 'Sergio Gomez', '83440589', 'JZ90123', 'sergio@email.com', 1, 9);
+
+INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12345', 'carmen@email.com', 2, 10);
