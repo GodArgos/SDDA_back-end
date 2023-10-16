@@ -37,6 +37,7 @@ import { NaturalPerson } from "./classes/model/NaturalPerson.js";
 import { UserController } from "./classes/controller/UserController.js";
 import { ExpedientController } from "./classes/controller/ExpedientController.js";
 import { DemandController } from "./classes/controller/DemandController.js";
+import { TypeUserController } from "./classes/controller/TypeUserController.js";
 
 // ------------------------------------ Endpoints ------------------------------------ 
 
@@ -90,16 +91,70 @@ app.post("/login", async (req, res) => {
 
 });
 
-// Información más reciente de 'Mi Perfil'
-app.post("/profile", async (req, res) => {
+// Información más reciente de 'Mi Perfil' - Persona Natural
+app.post("/profile-person", async (req, res) => {
 
+    try {
+        let typeControl = TypeUserController();
+        const user = typeControl.searchForNPUser(req.body.username, req.body.password);
+
+        if (user) {
+            res.send(user);
+            console.log(user);
+        }
+        else {
+            return res.status(404).json({ error: "Usuario no encontrado." });
+        }
+    }
+    catch (e) {
+        res.send(e);
+    }
 });
 
-// Modificar info en mi 'Mi Perfil'
-app.post("/modify-profile", async (req, res) => {
+// Información más reciente de 'Mi Perfil' - Juez
+app.post("/profile-judge", async (req, res) => {
+
+    try {
+        let typeControl = TypeUserController();
+        const juez = typeControl.searchForJudgeUser(req.body.username, req.body.password);
+
+        if (user) {
+            res.send(user);
+            console.log(user);
+        }
+        else {
+            return res.status(404).json({ error: "Usuario no encontrado." });
+        }
+    }
+    catch (e) {
+        res.send(e);
+    }
+});
+
+// Modificar info en mi 'Mi Perfil' - Persona 
+app.post("/modify-profile-person", async (req, res) => {
     try {
         let userControl = new UserController();
-        let modifiedUser = userControl.modifyUser(req.body);
+        let modifiedUser = userControl.modifyUserPerson(req.body);
+
+        if (modifiedUser) {
+            res.send(modifiedUser);
+        }
+        else {
+            res.status(404).json({ message: "Usuario no encontrado" });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al modificar el usuario." });
+    }
+});
+
+// Modificar info en mi 'Mi Perfil' - Juez 
+app.post("/modify-profile-judge", async (req, res) => {
+    try {
+        let userControl = new UserController();
+        let modifiedUser = userControl.modifyUserJudge(req.body);
 
         if (modifiedUser) {
             res.send(modifiedUser);
@@ -120,7 +175,6 @@ app.post("/plantilla", (req, res) => {
 });
 
 // Descargar pdf específico de solicitud
-
 
 // Conseguir todas las solicitudes de demanda
 
@@ -179,7 +233,7 @@ app.post("/search-expedient", async (req, res) => {
         else {
             return res.status(404).json({ error: "Expediente no encontrado." });
         }
-    }   
+    }
     catch (e) {
         res.send(e);
     }

@@ -41,9 +41,6 @@ export const PersonaNatural = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
-        },
-        direccion: {
-            type: DataTypes.STRING,
         }
     },
     {
