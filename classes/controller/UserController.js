@@ -72,10 +72,10 @@ export class UserController {
         const personaNatural = typeControl.searchForNPUser(_username, _password);
         const juez = typeControl.searchForJudgeUser(_username, _password);
 
-        if (personaNatural) {
+        if (personaNatural && !juez) {
             return personaNatural;
         }
-        else if (juez) {
+        else if (juez && !personaNatural) {
             return juez;
         }
         else {
