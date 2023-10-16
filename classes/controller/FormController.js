@@ -13,8 +13,6 @@ import multer from 'multer';
 //const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
-
-
 export const uploadFile = async (req, res) => {
   try {
     const uploadFunction = cloudinary.uploader.upload_stream(
@@ -27,9 +25,16 @@ export const uploadFile = async (req, res) => {
 
         const link = result.secure_url; // <-- Aquí es donde se extrae el link
 
-        const dbResult = await insertFileLink(link);
-        
-        res.status(201).json(dbResult);
+        const dbResult = await insertFileLink(req.body, link);
+
+        //res.status(201).json(dbResult);
+
+        if (dbResult != 200) {
+          res.status(404).json({ error: "Problemas al crear solicitud de demanda." })
+        }
+        else {
+          res.status(201).json({ message: "Solicitud creada con exito "});
+        }
       }
     );
 
