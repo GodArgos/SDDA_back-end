@@ -83,10 +83,14 @@ export class UserController {
         }
     }
 
-    static async modifyUser(updatedFields) {
-        let typeControl = TypeUserController();
-        const personaNatural = typeControl.searchForNPUser(updatedFields.username, updatedFields.password);
-        const juez = typeControl.searchForJudgeUser(updatedFields.username, updatedFields.password);
+    static async modifyUserPerson(updatedFields){
+        const personaNatural = await PersonaNatural.findOne({
+            where: {
+                id: {
+                    [Op.eq]: updatedFields.id
+                }
+            }
+        });
 
         if (personaNatural) {
             await PersonaNatural.update(updatedFields, {
@@ -94,7 +98,21 @@ export class UserController {
             });
             return personaNatural;
         }
-        else if (juez) {
+        else {
+            return null;
+        }
+    }
+
+    static async modifyUserJudge(updatedFields) {
+        const juez = await Juez.findOne({
+            where: {
+                id: {
+                    [Op.eq]: updatedFields.id
+                }
+            }
+        });
+
+        if (juez) {
             await Juez.update(updatedFields, {
                 fields: Object.keys(updatedFields).filter((field) => updatedFields[field] !== null)
             });
