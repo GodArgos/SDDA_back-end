@@ -62,7 +62,6 @@ app.post("/register", async (req, res) => {
             req.body.username,
             req.body.password,
             req.body.email,
-            req.body.address
         );
 
         let userControl = new UserController();
