@@ -193,4 +193,4 @@ INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dn
 VALUES ('juez_sergio', 'password567', 'Sergio', 'Gomez', 'Sergio Gomez', '83440589', 'JZ90123', 'sergio@email.com', 1, 9);
 
 INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12345', 'carmen@email.com', 2, 10);
+VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12346', 'carmen@email.com', 2, 10);
