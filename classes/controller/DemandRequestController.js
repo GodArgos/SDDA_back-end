@@ -44,4 +44,24 @@ export class DemandRequestController {
         await formularioIngreso.destroy();
         return 200;
     }
+
+
+    async getPDFLinkByPersonaNaturalId(personaNaturalId) {
+        try {
+            // Buscar el formulario basado en el ID de la persona natural
+            const formulario = await FormularioIngreso.findOne({ personaNaturalId: personaNaturalId });
+
+            if (formulario) {
+                return formulario.pdf_path;
+            } else {
+                throw new Error('No se encontró el formulario para el ID de persona natural proporcionado.');
+            }
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
+
+
 }

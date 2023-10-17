@@ -2,8 +2,15 @@ import { sequelize } from "./database/database.js";
 import express from "express";
 import cors from "cors";
 import { uploadFile } from './classes/controller/FormController.js'
-
 import { uploadMiddleware } from './classes/controller/FormController.js'
+
+
+
+//import { insertFileLink, getPDFLinkByNaturalPersonId } from './classes/model/PDFForm.js';
+
+
+
+
 
 
 //const express = require('express');
@@ -203,7 +210,71 @@ app.post('/delete-req', async (req, res) => {
     }
 });
 
+
+
+
+
+
+
+
+
 // Descargar pdf específico de solicitud
+    // Descargar pdf específico basado en el id de persona natural
+// Descargar pdf específico basado en el ID de la persona natural
+
+app.get("/download-pdf/:personaNaturalId", async (req, res) => {
+    try {
+        let dreq = new DemandRequestController();
+        const pdfLink = await dreq.getPDFLinkByPersonaNaturalId(req.params.personaNaturalId);
+
+        if (pdfLink) {
+            res.redirect(pdfLink);
+        } else {
+            res.status(404).json({ error: "PDF no encontrado." });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al descargar el PDF." });
+    }
+});
+
+
+/*
+app.get("/download-pdf/:personaNaturalId", async (req, res) => {
+    try {
+        const personaNaturalId = req.params.personaNaturalId;
+
+        const record = await FormularioIngreso.findOne({
+            where: { personaNaturalId: personaNaturalId }
+        });
+
+        if (record && record.pdf_path) {
+            // redirecciona al link del pdf para descargarlo
+            res.redirect(record.pdf_path);
+        } else {
+            res.status(404).json({ error: "PDF no encontrado." });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al descargar el PDF." });
+    }
+});
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Conseguir solicitud de demanda específica
 app.post("/get-dem-req", async (req, res) => {

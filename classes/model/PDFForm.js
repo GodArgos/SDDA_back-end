@@ -34,6 +34,26 @@ export async function insertFileLink(userId, link) {
   }
 };
 
+
+export async function getPDFLinkByPersonaNaturalId(personaNaturalId) {
+  try {
+      const record = await FormularioIngreso.findOne({
+          where: { personaNaturalId: personaNaturalId }
+      });
+
+      if (record) {
+          return record.pdf_path;
+      } else {
+          return null;
+      }
+  } catch (error) {
+      throw error;
+  }
+}
+
+
+
+
 //module.exports = { insertFileLink };
 
 
