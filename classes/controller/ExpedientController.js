@@ -1,5 +1,6 @@
 import { Op } from "sequelize";
 
+import { Expediente } from "../../models/forms/Expediente.js";
 import { FormRENIEC } from "../../models/forms/FormReniec.js";
 import { FormSUNARP } from "../../models/forms/FormSunarp.js";
 import { FormMINTRABAJO } from "../../models/forms/FormMinTrabajo.js";
@@ -7,7 +8,6 @@ import { FormMINTRABAJO } from "../../models/forms/FormMinTrabajo.js";
 export class ExpedientController {
 
     async searchExpedient(dniUser) {
-        console.log("Hola")
         const expediente = await Expediente.findOne({
             where: {
                 dni: {
@@ -20,8 +20,7 @@ export class ExpedientController {
                 { model: FormMINTRABAJO }
             ]
         });
-        console.log(expediente)
-        console.log("Hola")
+
         if (expediente) {
             console.log(expediente)
             return expediente;

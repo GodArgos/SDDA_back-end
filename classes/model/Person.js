@@ -5,7 +5,7 @@ export class Person {
         this.dni = dni;
         this.names = capitalizeFirstLetter(names);
         this.lastnames = capitalizeFirstLetter(lastnames);
-        this.fullname = this.names + " " +this.fullname;
+        //this.fullname = this.names + " " + this.fullname;
         this.sex = sex;
     }
 }

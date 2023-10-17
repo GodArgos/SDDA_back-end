@@ -287,7 +287,7 @@ app.post("/get-demand", async (req, res) => {
 app.post("/search-expedient", async (req, res) => {
     try {
         let expControl = new ExpedientController();
-        let expedient = await expControl.searchExpedient(req.body.dni);
+        const expedient = await expControl.searchExpedient(req.body.dni);
 
         if (expedient) {
             res.send(expedient);

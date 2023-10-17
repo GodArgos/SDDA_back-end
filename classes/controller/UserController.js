@@ -4,6 +4,7 @@ import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
 import { TypeUserController } from "./TypeUserController.js";
 import { ExpedientController } from "./ExpedientController.js";
+import { capitalizeFirstLetter } from "../../utils/Functions.js";
 
 export class UserController {
 
@@ -45,7 +46,7 @@ export class UserController {
                     password: NaturalPerson.password,
                     nombres: NaturalPerson.names,
                     apellidos: NaturalPerson.lastnames,
-                    nombreCompleto: NaturalPerson.fullname,
+                    nombreCompleto: NaturalPerson.names + " " + NaturalPerson.lastnames,
                     dni: NaturalPerson.dni,
                     correo: NaturalPerson.email,
                     direccion: NaturalPerson.address,
@@ -83,7 +84,7 @@ export class UserController {
         }
     }
 
-    async modifyUserPerson(updatedFields){
+    async modifyUserPerson(updatedFields) {
         const personaNatural = await PersonaNatural.findOne({
             where: {
                 id: {
@@ -92,10 +93,39 @@ export class UserController {
             }
         });
 
+        let changes = 0;
+
+        // Actualiza los campos si no son nulos en updatedFields
+        if (updatedFields.username !==  null && updatedFields.username !== personaNatural.username) {
+            personaNatural.username = updatedFields.username;
+        }
+        if (updatedFields.password !== null && updatedFields.password !== personaNatural.password) {
+            personaNatural.password = updatedFields.password;
+        }
+        if (updatedFields.nombres !== null && updatedFields.nombres !== personaNatural.nombres) {
+            personaNatural.nombres = capitalizeFirstLetter(updatedFields.nombres);
+            changes++;
+        }
+        if (updatedFields.apellidos !== null && updatedFields.apellidos !== personaNatural.apellidos) {
+            personaNatural.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
+            changes++;
+        }
+        if (changes >= 1) {
+            personaNatural.nombreCompleto = personaNatural.nombres + " " + personaNatural.apellidos;
+        }
+        if (updatedFields.dni !== null && updatedFields.dni !== personaNatural.dni) {
+            personaNatural.dni = updatedFields.dni;
+        }
+        if (updatedFields.correo !== null && updatedFields.correo !== personaNatural.correo) {
+            personaNatural.correo = updatedFields.correo;
+        }
+        if (updatedFields.sexoId !== null && updatedFields.sexoId !== personaNatural.sexoId) {
+            personaNatural.sexoId = updatedFields.sexoId;
+        }
+
+        await personaNatural.save();
+
         if (personaNatural) {
-            await PersonaNatural.update(updatedFields, {
-                fields: Object.keys(updatedFields).filter((field) => updatedFields[field] !== null)
-            });
             return personaNatural;
         }
         else {
@@ -112,10 +142,41 @@ export class UserController {
             }
         });
 
+        let changes = 0;
+        // Actualiza los campos si no son nulos en updatedFields
+        if (updatedFields.username !==  null && updatedFields.username !== juez.username) {
+            juez.username = updatedFields.username;
+        }
+        if (updatedFields.password !== null && updatedFields.password !== juez.password) {
+            juez.password = updatedFields.password;
+        }
+        if (updatedFields.nombres !== null && updatedFields.nombres !== juez.nombres) {
+            juez.nombres = capitalizeFirstLetter(updatedFields.nombres);
+            changes++;
+        }
+        if (updatedFields.apellidos !== null && updatedFields.apellidos !== juez.apellidos) {
+            juez.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
+            changes++;
+        }
+        if (changes >= 1) {
+            juez.nombreCompleto = juez.nombres + " " + juez.apellidos;
+        }
+        if (updatedFields.dni !== null && updatedFields.dni !== juez.dni) {
+            juez.dni = updatedFields.dni;
+        }
+        if (updatedFields.correo !== null && updatedFields.correo !== juez.correo) {
+            juez.correo = updatedFields.correo;
+        }
+        if (updatedFields.sexoId !== null && updatedFields.sexoId !== juez.sexoId) {
+            juez.sexoId = updatedFields.sexoId;
+        }
+        if (updatedFields.juzgadoId !== null && updatedFields.juzgadoId !== juez.juzgadoId) {
+            juez.juzgadoId = updatedFields.juzgadoId;
+        }
+        
+        await juez.save();
+
         if (juez) {
-            await Juez.update(updatedFields, {
-                fields: Object.keys(updatedFields).filter((field) => updatedFields[field] !== null)
-            });
             return juez;
         }
         else {
