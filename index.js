@@ -47,6 +47,7 @@ import { UserController } from "./classes/controller/UserController.js";
 import { ExpedientController } from "./classes/controller/ExpedientController.js";
 import { DemandController } from "./classes/controller/DemandController.js";
 import { TypeUserController } from "./classes/controller/TypeUserController.js";
+import { DemandRequestController } from "./classes/controller/DemandRequestController.js";
 
 // ------------------------------------ Endpoints ------------------------------------ 
 
@@ -68,10 +69,10 @@ app.post("/register", async (req, res) => {
         let status = userControl.createUser(newUser);
 
         if (status != 200) {
-            return res.status(404).json({ error: "Problemas al crear usuario." })
+            res.status(404).json({ error: "Problemas al crear usuario." })
         }
         else {
-            res.send("Usuario creado con exito.");
+            res.status(200).json({ message: "Usuario creado con exito."} );
         }
     }
     catch (error) {
@@ -91,7 +92,7 @@ app.post("/login", async (req, res) => {
             console.log(user);
         }
         else {
-            return res.status(404).json({ error: "Usuario no encontrado." });
+            res.status(404).json({ error: "Usuario no encontrado." });
         }
     }
     catch (e) {
@@ -112,7 +113,7 @@ app.post("/profile-person", async (req, res) => {
             console.log(user);
         }
         else {
-            return res.status(404).json({ error: "Usuario no encontrado." });
+            res.status(404).json({ error: "Usuario no encontrado." });
         }
     }
     catch (e) {
@@ -127,12 +128,12 @@ app.post("/profile-judge", async (req, res) => {
         let typeControl = TypeUserController();
         const juez = typeControl.searchForJudgeUser(req.body.username, req.body.password);
 
-        if (user) {
-            res.send(user);
-            console.log(user);
+        if (juez) {
+            res.send(juez);
+            console.log(juez);
         }
         else {
-            return res.status(404).json({ error: "Usuario no encontrado." });
+            res.status(404).json({ error: "Usuario no encontrado." });
         }
     }
     catch (e) {
@@ -180,21 +181,70 @@ app.post("/modify-profile-judge", async (req, res) => {
 
 // Descargar pdf solicitud de demanda "PLANTILLA"
 app.post("/plantilla", (req, res) => {
-    res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l'); 
+    res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l');
 });
 
 // Crear solicitud de demanda
-
-
-// Descargar pdf específico de solicitud
 app.post('/upload', uploadMiddleware, uploadFile);
 
+// Eliminar solicitud de demanda
+app.post('/delete-req', (req, res) => {
+    try {
+        let dreq = new DemandRequestController();
+        let result = dreq.deleteDemandReq(req.body.id);
 
+        if (result) {
+            res.status(200).json({ message: "Solicitud de Demanda eliminada con exito." });
+        }
+        else {
+            res.status(404).json({ message: "Solicitud no encontrada." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al eliminar la solicitud." });
+    }
+});
 
-
-// Conseguir todas las solicitudes de demanda
+// Descargar pdf específico de solicitud
 
 // Conseguir solicitud de demanda específica
+app.post("/get-dem-req", async (req, res) => {
+    try {
+        let dreq = new DemandRequestController();
+        const entry = dreq.getDemandReq(req.body.id);
+
+        if (entry) {
+            res.send(entry);
+        }
+        else {
+            res.status(404).json({ error: "No existe la solicitud." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al traer la solicitud." });
+    }
+});
+
+// Conseguir todas las solicitudes de demanda
+app.post("/get-all-dem-req", async (req, res) => {
+    try {
+        let dreq = new DemandRequestController();
+        const entries = dreq.getAllDemandReq();
+
+        if (entries) {
+            res.send(entries);
+        }
+        else {
+            res.status(404).json({ error: "No hay solicitudes." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al traer solicitudes." });
+    }
+});
 
 // Crear demanda
 
@@ -247,7 +297,7 @@ app.post("/search-expedient", async (req, res) => {
             console.log(expedient)
         }
         else {
-            return res.status(404).json({ error: "Expediente no encontrado." });
+            res.status(404).json({ error: "Expediente no encontrado." });
         }
     }
     catch (e) {
