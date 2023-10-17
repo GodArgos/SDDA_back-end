@@ -66,11 +66,11 @@ export class UserController {
         }
     }
 
-    static async searchUser(_username, _password) {
+    async searchUser(_username, _password) {
         // Intenta buscar el usuario en la tabla PersonaNatural
-        let typeControl = TypeUserController();
-        const personaNatural = typeControl.searchForNPUser(_username, _password);
-        const juez = typeControl.searchForJudgeUser(_username, _password);
+        let typeControl = new TypeUserController();
+        const personaNatural = await typeControl.searchForNPUser(_username, _password);
+        const juez = await typeControl.searchForJudgeUser(_username, _password);
 
         if (personaNatural && !juez) {
             return personaNatural;
@@ -83,7 +83,7 @@ export class UserController {
         }
     }
 
-    static async modifyUserPerson(updatedFields){
+    async modifyUserPerson(updatedFields){
         const personaNatural = await PersonaNatural.findOne({
             where: {
                 id: {
@@ -103,7 +103,7 @@ export class UserController {
         }
     }
 
-    static async modifyUserJudge(updatedFields) {
+    async modifyUserJudge(updatedFields) {
         const juez = await Juez.findOne({
             where: {
                 id: {

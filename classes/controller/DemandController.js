@@ -6,7 +6,7 @@ import { FormularioIngreso } from "../../models/forms/FormularioIngreso.js";
 
 export class DemandController {
 
-    static async getDemand(demandId) {
+    async getDemand(demandId) {
         const demanda = await Demanda.findByPk(demandId, {
             include: [
                 { model: Juez },
@@ -25,7 +25,7 @@ export class DemandController {
         }
     }
 
-    static async getAllDemands() {
+    async getAllDemands() {
         const demandas = await Demanda.findAll({
             include: [
                 { model: Juez },
@@ -43,6 +43,4 @@ export class DemandController {
             return null;
         }
     }
-
-
 }

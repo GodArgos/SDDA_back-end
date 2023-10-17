@@ -3,9 +3,11 @@ import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 
 export class DemandRequestController {
 
-    static async getAllDemandReq() {
+    async getAllDemandReq() {
         const entries = await FormularioIngreso.findAll({
-            include: [PersonaNatural], // Incluye la tabla relacionada PersonaNatural
+            include: [
+                { model: PersonaNatural }
+            ], // Incluye la tabla relacionada PersonaNatural
         });
         
         if (entries) {
@@ -16,9 +18,11 @@ export class DemandRequestController {
         }
     }
 
-    static async getDemandReq(reqid) {
+    async getDemandReq(reqid) {
         const entry = await FormularioIngreso.findByPk(reqid, {
-            include: [PersonaNatural], // Incluye la tabla relacionada PersonaNatural
+            include: [
+                { model: PersonaNatural }
+            ], // Incluye la tabla relacionada PersonaNatural
         });
 
         if (entry) {
@@ -29,7 +33,7 @@ export class DemandRequestController {
         }
     }
 
-    static async deleteDemandReq(reqid) {
+    async deleteDemandReq(reqid) {
         const formularioIngreso = await FormularioIngreso.findByPk(reqid);
 
         if (!formularioIngreso) {

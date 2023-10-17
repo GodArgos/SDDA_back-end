@@ -65,7 +65,7 @@ app.post("/register", async (req, res) => {
         );
 
         let userControl = new UserController();
-        let status = userControl.createUser(newUser);
+        let status = await userControl.createUser(newUser);
 
         if (status != 200) {
             res.status(404).json({ error: "Problemas al crear usuario." })
@@ -84,7 +84,7 @@ app.post("/login", async (req, res) => {
 
     try {
         let userControl = new UserController();
-        let user = userControl.searchUser(req.body.username, req.body.password);
+        let user = await userControl.searchUser(req.body.username, req.body.password);
 
         if (user) {
             res.send(user);
@@ -142,7 +142,7 @@ app.post("/profile-judge", async (req, res) => {
 app.post("/modify-profile-person", async (req, res) => {
     try {
         let userControl = new UserController();
-        let modifiedUser = userControl.modifyUserPerson(req.body);
+        let modifiedUser = await userControl.modifyUserPerson(req.body);
 
         if (modifiedUser) {
             res.send(modifiedUser);
@@ -161,7 +161,7 @@ app.post("/modify-profile-person", async (req, res) => {
 app.post("/modify-profile-judge", async (req, res) => {
     try {
         let userControl = new UserController();
-        let modifiedUser = userControl.modifyUserJudge(req.body);
+        let modifiedUser = await userControl.modifyUserJudge(req.body);
 
         if (modifiedUser) {
             res.send(modifiedUser);
@@ -185,10 +185,10 @@ app.post("/plantilla", (req, res) => {
 app.post('/upload', uploadMiddleware, uploadFile);
 
 // Eliminar solicitud de demanda
-app.post('/delete-req', (req, res) => {
+app.post('/delete-req', async (req, res) => {
     try {
         let dreq = new DemandRequestController();
-        let result = dreq.deleteDemandReq(req.body.id);
+        let result = await dreq.deleteDemandReq(req.body.id);
 
         if (result) {
             res.status(200).json({ message: "Solicitud de Demanda eliminada con exito." });
@@ -209,7 +209,7 @@ app.post('/delete-req', (req, res) => {
 app.post("/get-dem-req", async (req, res) => {
     try {
         let dreq = new DemandRequestController();
-        const entry = dreq.getDemandReq(req.body.id);
+        const entry = await dreq.getDemandReq(req.body.id);
 
         if (entry) {
             res.send(entry);
@@ -228,7 +228,7 @@ app.post("/get-dem-req", async (req, res) => {
 app.post("/get-all-dem-req", async (req, res) => {
     try {
         let dreq = new DemandRequestController();
-        const entries = dreq.getAllDemandReq();
+        const entries = await dreq.getAllDemandReq();
 
         if (entries) {
             res.send(entries);
@@ -249,7 +249,7 @@ app.post("/get-all-dem-req", async (req, res) => {
 app.post("/get-all-demands", async (req, res) => {
     try {
         let demandControl = new DemandController();
-        const demandas = demandControl.getAllDemands();
+        const demandas = await demandControl.getAllDemands();
 
         if (demandas) {
             res.send(demandas);
@@ -268,7 +268,7 @@ app.post("/get-all-demands", async (req, res) => {
 app.post("/get-demand", async (req, res) => {
     try {
         let demandControl = new DemandController();
-        const demanda = demandControl.getDemand(req.body.id);
+        const demanda = await demandControl.getDemand(req.body.id);
 
         if (demanda) {
             res.send(demandas);
@@ -287,7 +287,7 @@ app.post("/get-demand", async (req, res) => {
 app.post("/search-expedient", async (req, res) => {
     try {
         let expControl = new ExpedientController();
-        let expedient = expControl.searchExpedient(req.body.dni);
+        let expedient = await expControl.searchExpedient(req.body.dni);
 
         if (expedient) {
             res.send(expedient);
