@@ -125,8 +125,8 @@ app.post("/profile-person", async (req, res) => {
 app.post("/profile-judge", async (req, res) => {
 
     try {
-        let typeControl = TypeUserController();
-        const juez = typeControl.searchForJudgeUser(req.body.username, req.body.password);
+        let typeControl = new TypeUserController();
+        const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
 
         if (juez) {
             res.send(juez);

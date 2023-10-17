@@ -2,6 +2,8 @@ import { Op } from "sequelize";
 
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
+import { Juzgado } from "../../models/other/Juzgado.js";
+import { Sexo } from "../../models/other/Sexo.js";
 
 export class TypeUserController {
     static async searchForNPUser(_username, _password) {
@@ -27,7 +29,7 @@ export class TypeUserController {
         }
     }
 
-    static async searchForJudgeUser(_username, _password) {
+    async searchForJudgeUser(_username, _password) {
         const juez = await Juez.findOne({
             where: {
                 username: {
@@ -44,9 +46,16 @@ export class TypeUserController {
         });
 
         if (juez) {
-            return juez;
+            return {
+                ...juez.toJSON(),
+                nombreSexo: juez.Sexo.nombre,
+                direccionJuzgado: juez.Juzgado.direccion
+            };
         } else {
             return null;
         }
+
+
+
     }
 }
