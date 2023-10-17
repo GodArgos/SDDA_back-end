@@ -6,7 +6,7 @@ import { Juzgado } from "../../models/other/Juzgado.js";
 import { Sexo } from "../../models/other/Sexo.js";
 
 export class TypeUserController {
-    static async searchForNPUser(_username, _password) {
+    async searchForNPUser(_username, _password) {
         const personaNatural = await PersonaNatural.findOne({
             where: {
                 username: {
@@ -22,7 +22,10 @@ export class TypeUserController {
         });
 
         if (personaNatural) {
-            return personaNatural;
+            return {
+                ...personaNatural.toJSON(),
+                nombreSexo: personaNatural.Sexo.nombre,
+            };
         }
         else {
             return null;
@@ -54,8 +57,5 @@ export class TypeUserController {
         } else {
             return null;
         }
-
-
-
     }
 }

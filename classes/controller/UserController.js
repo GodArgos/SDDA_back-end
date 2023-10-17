@@ -7,7 +7,7 @@ import { ExpedientController } from "./ExpedientController.js";
 
 export class UserController {
 
-    static async createUser(NaturalPerson) {
+    async createUser(NaturalPerson) {
         // Ver si existe un usuario igual
         const checkPerson = await PersonaNatural.findAll({
             where: {
@@ -35,7 +35,7 @@ export class UserController {
 
             // Buscar expediente con el dni del usuario
             let exControl = new ExpedientController();
-            let userExpedient = exControl.searchExpedient(NaturalPerson.dni);
+            let userExpedient = await exControl.searchExpedient(NaturalPerson.dni);
 
             // Si encuentra el expediente crea al usuario
             if (userExpedient) {

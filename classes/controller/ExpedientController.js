@@ -6,7 +6,8 @@ import { FormMINTRABAJO } from "../../models/forms/FormMinTrabajo.js";
 
 export class ExpedientController {
 
-    static async searchExpedient(dniUser) {
+    async searchExpedient(dniUser) {
+        console.log("Hola")
         const expediente = await Expediente.findOne({
             where: {
                 dni: {
@@ -19,8 +20,10 @@ export class ExpedientController {
                 { model: FormMINTRABAJO }
             ]
         });
-
+        console.log(expediente)
+        console.log("Hola")
         if (expediente) {
+            console.log(expediente)
             return expediente;
         }
         else {
