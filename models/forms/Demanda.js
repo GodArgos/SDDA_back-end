@@ -19,7 +19,6 @@ export const Demanda = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: true,
-            autoIncrement: true
         },
         fecha_emision: {
             type: DataTypes.STRING,
