@@ -88,24 +88,27 @@ app.post("/register", async (req, res) => {
 
 // Logear Usuario / PersonaNatural / Juez
 app.post("/login", async (req, res) => {
-
     try {
         let userControl = new UserController();
         let user = await userControl.searchUser(req.body.username, req.body.password);
 
         if (user) {
-            res.send(user);
-            console.log(user);
-        }
-        else {
+            res.json({
+                loginSuccess: true,
+                user: {
+                    ...user,
+                    password: undefined  
+                }
+            });
+        } else {
             res.status(404).json({ error: "Usuario no encontrado." });
         }
     }
     catch (e) {
-        res.send(e);
+        res.status(500).send(e); 
     }
-
 });
+
 
 // Información más reciente de 'Mi Perfil' - Persona Natural
 app.post("/profile-person", async (req, res) => {
