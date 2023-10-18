@@ -197,3 +197,11 @@ VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024
 
 INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
 VALUES (1, "17-10-2023", "https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf", 1);
+
+
+-- Formularios de demanda rellenados
+-- https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf
+-- https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609426/SDDA/ja4l4logawlmr9pcc70f.pdf
+-- https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609525/SDDA/pe5ouokdido9fd8gwm1j.pdf
+-- https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609603/SDDA/x4n8j5x3fn8yra7o6tw5.pdf
+-- https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609663/SDDA/j4pewocxgabzhbjuayzu.pdf
