@@ -1,3 +1,5 @@
+import { Op } from "sequelize";
+
 import { FormularioIngreso } from "../../models/forms/FormularioIngreso.js";
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 
@@ -46,10 +48,16 @@ export class DemandRequestController {
     }
 
 
-    async getPDFLinkByPersonaNaturalId(personaNaturalId) {
+    async getPDFLinkByPersonaNaturalId(pnatid) {
         try {
             // Buscar el formulario basado en el ID de la persona natural
-            const formulario = await FormularioIngreso.findOne({ personaNaturalId: personaNaturalId });
+            const formulario = await FormularioIngreso.findOne({
+                where: {
+                    personaNaturalId: {
+                        [Op.eq]: pnatid
+                    }
+                }
+            });
 
             if (formulario) {
                 return formulario.pdf_path;

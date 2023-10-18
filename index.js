@@ -78,7 +78,7 @@ app.post("/register", async (req, res) => {
             res.status(404).json({ error: "Problemas al crear usuario." })
         }
         else {
-            res.status(200).json({ message: "Usuario creado con exito."} );
+            res.status(200).json({ message: "Usuario creado con exito." });
         }
     }
     catch (error) {
@@ -211,21 +211,16 @@ app.post('/delete-req', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
 // Descargar pdf específico de solicitud
-    // Descargar pdf específico basado en el id de persona natural
+// Descargar pdf específico basado en el id de persona natural
 // Descargar pdf específico basado en el ID de la persona natural
 
-app.get("/download-pdf/:personaNaturalId", async (req, res) => {
+app.get("/download-pdf", async (req, res) => {
     try {
         let dreq = new DemandRequestController();
-        const pdfLink = await dreq.getPDFLinkByPersonaNaturalId(req.params.personaNaturalId);
+        const pdfLink = await dreq.getPDFLinkByPersonaNaturalId(req.body.id);
+
+        console.log(pdfLink);
 
         if (pdfLink) {
             res.redirect(pdfLink);
@@ -260,20 +255,6 @@ app.get("/download-pdf/:personaNaturalId", async (req, res) => {
     }
 });
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Conseguir solicitud de demanda específica
@@ -315,6 +296,22 @@ app.post("/get-all-dem-req", async (req, res) => {
 });
 
 // Crear demanda
+app.post("/create-demanda", async (req, res) => {
+    try {
+        let demandControl = new DemandController();
+        const status = await demandControl.createDemand(req.body);
+
+        if (status != 200) {
+            res.status(404).json({ error: "Problemas al crear demanda." })
+        }
+        else {
+            res.status(200).json({ message: "Demanda creada con exito." });
+        }
+    }
+    catch (error) {
+        res.send(error.message);
+    }
+});
 
 // Conseguir todas las demandas
 app.post("/get-all-demands", async (req, res) => {

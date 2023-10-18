@@ -2,6 +2,7 @@ import { Op } from "sequelize";
 
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
+import { Demandado } from "../../models/users/Demandado.js";
 import { TypeUserController } from "./TypeUserController.js";
 import { ExpedientController } from "./ExpedientController.js";
 import { capitalizeFirstLetter } from "../../utils/Functions.js";
@@ -67,6 +68,50 @@ export class UserController {
         }
     }
 
+    async createDefendant(Defendant) {
+        // Ver si existe un usuario igual
+        const checkDef = await Demandado.findAll({
+            where: {
+                [Op.eq]: [
+                    { dni: Defendant.dni }
+                ]
+            }
+        });
+
+        if (!checkDef) {
+            const maxIdResultUser = await Demandado.max("id");
+            const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
+
+            // Buscar expediente con el dni del demandado
+            let exControl = new ExpedientController();
+            let defExpedient = await exControl.searchExpedient(Defendant.dni);
+
+            if (defExpedient) {
+                const newDef = await Demandado.create({
+                    id: nextIdUser,
+                    nombres: Defendant.names,
+                    apellidos: Defendant.lastnames,
+                    nombreCompleto: Defendant.names + " " + Defendant.lastnames,
+                    dni: Defendant.dni,
+                    direccion: Defendant.address,
+                    sexoId: Defendant.sex,
+                    expedienteId: Defendant.id
+                });
+
+                // Y retorna el id del nuevo demandado
+                return newDef.id;
+            }
+            else {
+                return null;
+            }
+
+        }
+        else {
+            return checkDef.id;
+        }
+
+    }
+
     async searchUser(_username, _password) {
         // Intenta buscar el usuario en la tabla PersonaNatural
         let typeControl = new TypeUserController();
@@ -96,7 +141,7 @@ export class UserController {
         let changes = 0;
 
         // Actualiza los campos si no son nulos en updatedFields
-        if (updatedFields.username !==  null && updatedFields.username !== personaNatural.username) {
+        if (updatedFields.username !== null && updatedFields.username !== personaNatural.username) {
             personaNatural.username = updatedFields.username;
         }
         if (updatedFields.password !== null && updatedFields.password !== personaNatural.password) {
@@ -144,7 +189,7 @@ export class UserController {
 
         let changes = 0;
         // Actualiza los campos si no son nulos en updatedFields
-        if (updatedFields.username !==  null && updatedFields.username !== juez.username) {
+        if (updatedFields.username !== null && updatedFields.username !== juez.username) {
             juez.username = updatedFields.username;
         }
         if (updatedFields.password !== null && updatedFields.password !== juez.password) {
@@ -173,7 +218,7 @@ export class UserController {
         if (updatedFields.juzgadoId !== null && updatedFields.juzgadoId !== juez.juzgadoId) {
             juez.juzgadoId = updatedFields.juzgadoId;
         }
-        
+
         await juez.save();
 
         if (juez) {

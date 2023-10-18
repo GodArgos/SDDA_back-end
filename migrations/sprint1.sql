@@ -194,3 +194,6 @@ VALUES ('juez_sergio', 'password567', 'Sergio', 'Gomez', 'Sergio Gomez', '834405
 
 INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
 VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12346', 'carmen@email.com', 2, 10);
+
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
+VALUES (1, "17-10-2023", "https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf", 1);
