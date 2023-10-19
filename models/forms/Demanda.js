@@ -25,7 +25,7 @@ export const Demanda = sequelize.define(
             allowNull: false,
         },
         descripcion: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING
         }
     },
     {

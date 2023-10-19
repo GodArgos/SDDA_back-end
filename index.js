@@ -342,7 +342,7 @@ app.post("/get-demand", async (req, res) => {
         const demanda = await demandControl.getDemand(req.body.id);
 
         if (demanda) {
-            res.send(demandas);
+            res.send(demanda);
         }
         else {
             res.status(404).json({ message: "Demanda no encontrada o no existente." });

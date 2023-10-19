@@ -213,16 +213,16 @@ VALUES (5, '26/12/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v16976
 
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
-VALUE (1, '18/10/2023', 'Un padre soltero demanda al otro progenitor para obtener una contribución económica para el cuidado de sus hijos.', 1, 1, 1, 2, 1);
+VALUES (1, '18/10/2023', 'Un padre soltero demanda al otro progenitor para obtener una contribución económica para el cuidado de sus hijos.', 1, 1, 1, 2, 1);
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
-VALUE (2, '12/02/2023', 'Un cónyuge solicita una pensión alimenticia tras el divorcio para mantener su nivel de vida anterior al matrimonio.', 2, 2, 1, 2, 2);
+VALUES (2, '12/02/2023', 'Un cónyuge solicita una pensión alimenticia tras el divorcio para mantener su nivel de vida anterior al matrimonio.', 2, 2, 1, 2, 2);
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
-VALUE (3, '10/03/2023', 'Un padre demanda al otro progenitor para asegurar la atención y el sustento continuo de un hijo adulto con discapacidades.', 3, 3, 1, 2, 3);
+VALUES (3, '10/03/2023', 'Un padre demanda al otro progenitor para asegurar la atención y el sustento continuo de un hijo adulto con discapacidades.', 3, 3, 1, 2, 3);
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
-VALUE (4, '30/04/2023', 'Un cónyuge divorciado inicia una demanda legal para hacer cumplir los pagos de alimentos acordados que no se han pagado.', 4, 4, 1, 2, 4);
+VALUES (4, '30/04/2023', 'Un cónyuge divorciado inicia una demanda legal para hacer cumplir los pagos de alimentos acordados que no se han pagado.', 4, 4, 1, 2, 4);
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
-VALUE (5, '05/01/2024', 'Un padre que busca la custodia de sus hijos inicia una demanda de alimentos contra el otro progenitor para contribuir a los gastos de crianza de los menores.', 5, 5, 1, 2, 5);
+VALUES (5, '05/01/2024', 'Un padre que busca la custodia de sus hijos inicia una demanda de alimentos contra el otro progenitor para contribuir a los gastos de crianza de los menores.', 5, 5, 1, 2, 5);
