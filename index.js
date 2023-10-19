@@ -97,7 +97,7 @@ app.post("/login", async (req, res) => {
                 loginSuccess: true,
                 user: {
                     ...user,
-                    password: undefined  
+                     
                 }
             });
         } else {
@@ -131,6 +131,7 @@ app.post("/profile-person", async (req, res) => {
 
 // Información más reciente de 'Mi Perfil' - Juez
 app.post("/profile-judge", async (req, res) => {
+    console.log("Petición recibida en /profile-judge");
     try {
         let typeControl = new TypeUserController();
         const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
