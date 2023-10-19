@@ -60,6 +60,7 @@ export class DemandController {
 
         let userControl = new UserController();
         const defId = await userControl.createDefendant(def);
+        //console.log(defId);
 
         if (!defId) {
             const maxIdResultUser = await Demanda.max("id");
