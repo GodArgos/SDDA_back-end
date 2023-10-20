@@ -85,7 +85,7 @@ export class UserController {
         // });
 
         // Ver si existe un usuario igual
-        const checkDef = await Demandado.findAll({
+        const checkDef = await Demandado.findOne({
             where: {
                 // [Op.eq]: [
                 //     { dni: Defendant.dni }

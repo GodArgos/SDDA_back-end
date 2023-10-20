@@ -226,3 +226,23 @@ VALUES (4, '30/04/2023', 'Un cónyuge divorciado inicia una demanda legal para h
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")
 VALUES (5, '05/01/2024', 'Un padre que busca la custodia de sus hijos inicia una demanda de alimentos contra el otro progenitor para contribuir a los gastos de crianza de los menores.', 5, 5, 1, 2, 5);
+
+
+
+------ PRUEBA CREAR DEMANDA -------
+
+INSERT INTO "FormMINTRABAJO" (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('LimaLadrillos', 17310202794, 2000);
+INSERT INTO "FormMINTRABAJO" (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('AndesTextiles', 72777002223, 1050);
+INSERT INTO "FormMINTRABAJO" (nom_lugar_trabajo, ruc_lugar_trabajo, monto_ingreso) VALUES ('Cuzco Café', 93931655275, 3000);
+
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (3, 2);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (2, 1);
+INSERT INTO "FormSUNARP" (nro_propiedades, nro_vehiculos) VALUES (4, 3);
+
+INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "estadocivilId", "gradoInstruccionId") VALUES (73217549, 'Joaquin Alfredo', 'Incio Diaz', 'Joaquin Alfredo Incio Diaz', 'Av San Felipe 687, Lima', 1, 3, 2);
+INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "estadocivilId", "gradoInstruccionId") VALUES (74155186, 'Marco Andre', 'Quispe Granda', 'Marco Andre Quispe Granda', 'Jr. Los Rosales 666, Lima', 1, 2, 1);
+INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "estadocivilId", "gradoInstruccionId") VALUES (77697060, 'Gonzalo Miguel', 'Caballero Visso', 'Gonzalo Miguel Caballero Visso', 'Calle Los Pinos 987, Lima', 1, 4, 2);
+
+INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (21, 73217549, 21, 21, 21);
+INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (21, 74155186, 21, 21, 21);
+INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (23, 77697060, 23, 23, 23);

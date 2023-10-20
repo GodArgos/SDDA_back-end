@@ -214,12 +214,7 @@ app.post('/delete-req', async (req, res) => {
     }
 });
 
-
-// Descargar pdf específico de solicitud
-// Descargar pdf específico basado en el id de persona natural
-// Descargar pdf específico basado en el ID de la persona natural
-
-app.get("/download-pdf", async (req, res) => {
+app.post("/download-pdf", async (req, res) => {
     try {
         let dreq = new DemandRequestController();
         const pdfLink = await dreq.getPDFLinkByPersonaNaturalId(req.body.id);
@@ -227,7 +222,7 @@ app.get("/download-pdf", async (req, res) => {
         console.log(pdfLink);
 
         if (pdfLink) {
-            res.redirect(pdfLink);
+            res.json({ link: pdfLink});
         } else {
             res.status(404).json({ error: "PDF no encontrado." });
         }
@@ -236,30 +231,6 @@ app.get("/download-pdf", async (req, res) => {
         res.status(500).json({ error: "Error al descargar el PDF." });
     }
 });
-
-
-/*
-app.get("/download-pdf/:personaNaturalId", async (req, res) => {
-    try {
-        const personaNaturalId = req.params.personaNaturalId;
-
-        const record = await FormularioIngreso.findOne({
-            where: { personaNaturalId: personaNaturalId }
-        });
-
-        if (record && record.pdf_path) {
-            // redirecciona al link del pdf para descargarlo
-            res.redirect(record.pdf_path);
-        } else {
-            res.status(404).json({ error: "PDF no encontrado." });
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Error al descargar el PDF." });
-    }
-});
-*/
-
 
 // Conseguir solicitud de demanda específica
 app.post("/get-dem-req", async (req, res) => {

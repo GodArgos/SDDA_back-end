@@ -49,42 +49,83 @@ export class DemandController {
         }
     }
 
+    // async createDemand(fields) {
+    //     const def = new Defendant(
+    //         fields.def_dni,
+    //         fields.def_names,
+    //         fields.def_lastnames,
+    //         fields.def_address,
+    //         fields.def_sexId
+    //     )
+
+    //     let userControl = new UserController();
+    //     const defId = await userControl.createDefendant(def);
+    //     //console.log(defId);
+
+    //     if (defId) {
+    //         const maxIdResultUser = await Demanda.max("id");
+    //         const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
+
+    //         let date = getActualDate();
+
+    //         const newDemanda = await Demanda.create({
+    //             id: nextIdUser,
+    //             nro_demanda: nextIdUser,
+    //             fecha_emision: date,
+    //             descripcion: fields.dem_descrip,
+    //             juezId: fields.juez_id,
+    //             personaNaturalId: fields.persona_id,
+    //             demandadoId: defId,
+    //             estadoDemandaId: 2,
+    //             formularioId: fields.form_id
+    //         })
+
+    //         return 200;
+    //     }
+    //     else {
+    //         return 404;
+    //     }
+
+    // }
+
     async createDemand(fields) {
-        const def = new Defendant(
-            fields.def_dni,
-            fields.def_names,
-            fields.def_lastnames,
-            fields.def_address,
-            fields.def_sexId
-        )
-
-        let userControl = new UserController();
-        const defId = await userControl.createDefendant(def);
-        //console.log(defId);
-
-        if (!defId) {
-            const maxIdResultUser = await Demanda.max("id");
-            const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
-
-            let date = getActualDate();
-
-            const newDemanda = await Demanda.create({
-                id: nextIdUser,
-                nro_demanda: nextIdUser,
-                fecha_emision: date,
-                descripcion: fields.dem_descrip,
-                juezId: fields.juez_id,
-                personaNaturalId: fields.persona_id,
-                demandadoId: defId,
-                estadoDemandaId: 2,
-                formularioId: fields.form_id
-            })
-
-            return 200;
+        try {
+            const def = new Defendant(
+                fields.def_dni,
+                fields.def_names,
+                fields.def_lastnames,
+                fields.def_address,
+                fields.def_sexId
+            );
+    
+            let userControl = new UserController();
+            const defId = await userControl.createDefendant(def);
+    
+            if (defId) {
+                const maxIdResultUser = await Demanda.max("id");
+                const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
+    
+                let date = getActualDate();
+    
+                await Demanda.create({
+                    id: nextIdUser,
+                    nro_demanda: nextIdUser,
+                    fecha_emision: date,
+                    descripcion: fields.dem_descrip,
+                    juezId: fields.juez_id,
+                    personaNaturalId: fields.persona_id,
+                    demandadoId: defId,
+                    estadoDemandaId: 2,
+                    formularioId: fields.form_id
+                });
+    
+                return 200;
+            } else {
+                throw new Error("No se pudo crear el Demandado");
+            }
+        } catch (error) {
+            console.error("Error al crear demanda:", error.message);
+            return 404; // o puedes retornar el mensaje de error si lo prefieres
         }
-        else {
-            return 404;
-        }
-
     }
 }
