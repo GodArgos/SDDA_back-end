@@ -244,5 +244,5 @@ INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, 
 INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "estadocivilId", "gradoInstruccionId") VALUES (77697060, 'Gonzalo Miguel', 'Caballero Visso', 'Gonzalo Miguel Caballero Visso', 'Calle Los Pinos 987, Lima', 1, 4, 2);
 
 INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (21, 73217549, 21, 21, 21);
-INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (21, 74155186, 21, 21, 21);
+INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (22, 74155186, 22, 22, 22);
 INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (23, 77697060, 23, 23, 23);
