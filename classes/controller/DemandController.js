@@ -81,7 +81,8 @@ export class DemandController {
                 });
 
                 const form = await FormularioIngreso.findByPk(fields.form_id);
-                form.id = 1;
+                form.estado = 1;
+                await form.save;
     
                 return 200;
             } else {
