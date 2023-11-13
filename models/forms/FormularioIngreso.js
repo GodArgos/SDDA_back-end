@@ -23,6 +23,10 @@ export const FormularioIngreso = sequelize.define(
         pdf_path: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        estado: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {

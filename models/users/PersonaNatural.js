@@ -12,6 +12,10 @@ export const PersonaNatural = sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
+        tipo:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,

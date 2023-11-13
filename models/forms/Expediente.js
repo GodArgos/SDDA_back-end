@@ -20,7 +20,8 @@ export const Expediente = sequelize.define(
         },
         dni: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     },
     {

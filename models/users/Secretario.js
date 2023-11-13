@@ -5,8 +5,8 @@ import { sequelize } from "../../database/database.js";
 import { Sexo } from "../other/Sexo.js";
 import { Juzgado } from "../other/Juzgado.js";
 
-export const Juez = sequelize.define(
-    "Juez", {
+export const Secretario = sequelize.define(
+    "Secretario", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

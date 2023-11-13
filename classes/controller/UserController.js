@@ -6,12 +6,13 @@ import { Demandado } from "../../models/users/Demandado.js";
 import { TypeUserController } from "./TypeUserController.js";
 import { ExpedientController } from "./ExpedientController.js";
 import { capitalizeFirstLetter } from "../../utils/Functions.js";
+import { Secretario } from "../../models/users/Secretario.js";
 
 export class UserController {
 
     async createUser(NaturalPerson) {
         // Ver si existe un usuario igual
-        const checkPerson = await PersonaNatural.findAll({
+        const checkPerson = await PersonaNatural.findOne({
             where: {
                 [Op.or]: [
                     { username: NaturalPerson.username },
@@ -21,7 +22,7 @@ export class UserController {
             }
         });
 
-        const checkJudge = await Juez.findAll({
+        const checkJudge = await Juez.findOne({
             where: {
                 [Op.or]: [
                     { username: NaturalPerson.username },
@@ -31,7 +32,17 @@ export class UserController {
             }
         });
 
-        if (checkPerson.length == 0 && checkJudge.length == 0) {
+        const checkSecretary = await Secretario.findOne({
+            where: {
+                [Op.or]: [
+                    { username: NaturalPerson.username },
+                    { dni: NaturalPerson.dni },
+                    { correo: NaturalPerson.email }
+                ]
+            }
+        });
+
+        if (checkPerson.length == 0 && checkJudge.length == 0 && checkSecretary.length == 0) {
             const maxIdResultUser = await PersonaNatural.max("id");
             const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
 
@@ -67,23 +78,8 @@ export class UserController {
             return 404;
         }
     }
-    
 
     async createDefendant(Defendant) {
-
-        // if (!Defendant || !Defendant.dni) {
-        //     console.error("El objeto Defendant o el valor dni no están definidos:", Defendant);
-        //     return null;  // O cualquier otro valor que indique un error.
-        // }
-
-        // const checkDef = await Demandado.findAll({
-        //     where: {
-        //         [Op.eq]: [
-        //             { dni: Defendant.dni }
-        //         ]
-        //     }
-        // });
-
         // Ver si existe un usuario igual
         const checkDef = await Demandado.findOne({
             where: {
@@ -93,160 +89,195 @@ export class UserController {
                 dni: Defendant.dni
             }
         });
-    
 
         if (!checkDef) {
-                const maxIdResultUser = await Demandado.max("id");
-                const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
+            const maxIdResultUser = await Demandado.max("id");
+            const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
 
-                // Buscar expediente con el dni del demandado
-                let exControl = new ExpedientController();
-                let defExpedient = await exControl.searchExpedient(Defendant.dni);
+            // Buscar expediente con el dni del demandado
+            let exControl = new ExpedientController();
+            let defExpedient = await exControl.searchExpedient(Defendant.dni);
 
-                if (defExpedient) {
-                    const newDef = await Demandado.create({
-                        id: nextIdUser,
-                        nombres: Defendant.names,
-                        apellidos: Defendant.lastnames,
-                        nombreCompleto: Defendant.names + " " + Defendant.lastnames,
-                        dni: Defendant.dni,
-                        direccion: Defendant.address,
-                        sexoId: Defendant.sex,
-                        expedienteId: Defendant.id
-                    });
-                    //console.log(newDef);
-                    
-                    // Y retorna el id del nuevo demandado
-                    return newDef.id;
-                    
-                }
-                else {
-                    return null;
-                }
-                
-            }
-            else {
-                return checkDef.id;
-            }
+            if (defExpedient) {
+                const newDef = await Demandado.create({
+                    id: nextIdUser,
+                    nombres: Defendant.names,
+                    apellidos: Defendant.lastnames,
+                    nombreCompleto: Defendant.names + " " + Defendant.lastnames,
+                    dni: Defendant.dni,
+                    direccion: Defendant.address,
+                    sexoId: Defendant.sex,
+                    expedienteId: Defendant.id
+                });
 
-        }
-
-        
-
-    async searchUser(_username, _password) {
-            // Intenta buscar el usuario en la tabla PersonaNatural
-            let typeControl = new TypeUserController();
-            const personaNatural = await typeControl.searchForNPUser(_username, _password);
-            const juez = await typeControl.searchForJudgeUser(_username, _password);
-
-            if (personaNatural && !juez) {
-                return personaNatural;
-            }
-            else if (juez && !personaNatural) {
-                return juez;
+                // Y retorna el id del nuevo demandado
+                return newDef.id;
             }
             else {
                 return null;
             }
+
+        }
+        else {
+            return checkDef.id;
         }
 
-    async modifyUserPerson(updatedFields) {
-            const personaNatural = await PersonaNatural.findOne({
-                where: {
-                    id: {
-                        [Op.eq]: updatedFields.id
-                    }
-                }
-            });
+    }
 
-            let changes = 0;
+    async searchUser(_type, _username, _password) {
+        // Intenta buscar el usuario en la tabla PersonaNatural
+        let typeControl = new TypeUserController();
 
-            // Actualiza los campos si no son nulos en updatedFields
-            if (updatedFields.username !== null && updatedFields.username !== personaNatural.username) {
-                personaNatural.username = updatedFields.username;
-            }
-            if (updatedFields.password !== null && updatedFields.password !== personaNatural.password) {
-                personaNatural.password = updatedFields.password;
-            }
-            if (updatedFields.nombres !== null && updatedFields.nombres !== personaNatural.nombres) {
-                personaNatural.nombres = capitalizeFirstLetter(updatedFields.nombres);
-                changes++;
-            }
-            if (updatedFields.apellidos !== null && updatedFields.apellidos !== personaNatural.apellidos) {
-                personaNatural.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
-                changes++;
-            }
-            if (changes >= 1) {
-                personaNatural.nombreCompleto = personaNatural.nombres + " " + personaNatural.apellidos;
-            }
-            if (updatedFields.dni !== null && updatedFields.dni !== personaNatural.dni) {
-                personaNatural.dni = updatedFields.dni;
-            }
-            if (updatedFields.correo !== null && updatedFields.correo !== personaNatural.correo) {
-                personaNatural.correo = updatedFields.correo;
-            }
-            if (updatedFields.sexoId !== null && updatedFields.sexoId !== personaNatural.sexoId) {
-                personaNatural.sexoId = updatedFields.sexoId;
-            }
-
-            await personaNatural.save();
-
-            if (personaNatural) {
-                return personaNatural;
-            }
-            else {
-                return null;
-            }
+        var search;
+        if (_type == 0) {
+            search = await typeControl.searchForNPUser(_username, _password);
+        }
+        else if (_type == 1) {
+            search = await typeControl.searchForJudgeUser(_username, _password);
+        }
+        else {
+            search = await typeControl.searchForSecretaryUser(_username, _password);
         }
 
-    async modifyUserJudge(updatedFields) {
-            const juez = await Juez.findOne({
-                where: {
-                    id: {
-                        [Op.eq]: updatedFields.id
-                    }
-                }
-            });
-
-            let changes = 0;
-            // Actualiza los campos si no son nulos en updatedFields
-            if (updatedFields.username !== null && updatedFields.username !== juez.username) {
-                juez.username = updatedFields.username;
-            }
-            if (updatedFields.password !== null && updatedFields.password !== juez.password) {
-                juez.password = updatedFields.password;
-            }
-            if (updatedFields.nombres !== null && updatedFields.nombres !== juez.nombres) {
-                juez.nombres = capitalizeFirstLetter(updatedFields.nombres);
-                changes++;
-            }
-            if (updatedFields.apellidos !== null && updatedFields.apellidos !== juez.apellidos) {
-                juez.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
-                changes++;
-            }
-            if (changes >= 1) {
-                juez.nombreCompleto = juez.nombres + " " + juez.apellidos;
-            }
-            if (updatedFields.dni !== null && updatedFields.dni !== juez.dni) {
-                juez.dni = updatedFields.dni;
-            }
-            if (updatedFields.correo !== null && updatedFields.correo !== juez.correo) {
-                juez.correo = updatedFields.correo;
-            }
-            if (updatedFields.sexoId !== null && updatedFields.sexoId !== juez.sexoId) {
-                juez.sexoId = updatedFields.sexoId;
-            }
-            if (updatedFields.juzgadoId !== null && updatedFields.juzgadoId !== juez.juzgadoId) {
-                juez.juzgadoId = updatedFields.juzgadoId;
-            }
-
-            await juez.save();
-
-            if (juez) {
-                return juez;
-            }
-            else {
-                return null;
-            }
+        if (search) {
+            return search;
+        }
+        else {
+            return null;
         }
     }
+
+    async modifyUserPerson(updatedFields) {
+        const personaNatural = await PersonaNatural.findOne({
+            where: {
+                id: {
+                    [Op.eq]: updatedFields.id
+                }
+            }
+        });
+
+        let changes = 0;
+
+        // Actualiza los campos si no son nulos en updatedFields
+        if (updatedFields.password !== null && updatedFields.password !== personaNatural.password) {
+            personaNatural.password = updatedFields.password;
+        }
+        if (updatedFields.nombres !== null && updatedFields.nombres !== personaNatural.nombres) {
+            personaNatural.nombres = capitalizeFirstLetter(updatedFields.nombres);
+            changes++;
+        }
+        if (updatedFields.apellidos !== null && updatedFields.apellidos !== personaNatural.apellidos) {
+            personaNatural.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
+            changes++;
+        }
+        if (changes >= 1) {
+            personaNatural.nombreCompleto = personaNatural.nombres + " " + personaNatural.apellidos;
+        }
+
+        if (updatedFields.correo !== null && updatedFields.correo !== personaNatural.correo) {
+            personaNatural.correo = updatedFields.correo;
+        }
+        if (updatedFields.sexoId !== null && updatedFields.sexoId !== personaNatural.sexoId) {
+            personaNatural.sexoId = updatedFields.sexoId;
+        }
+
+        await personaNatural.save();
+
+        if (personaNatural) {
+            return personaNatural;
+        }
+        else {
+            return null;
+        }
+    }
+
+    async modifyUserJudge(updatedFields) {
+        const juez = await Juez.findOne({
+            where: {
+                id: {
+                    [Op.eq]: updatedFields.id
+                }
+            }
+        });
+
+        let changes = 0;
+        // Actualiza los campos si no son nulos en updatedFields
+        if (updatedFields.password !== null && updatedFields.password !== juez.password) {
+            juez.password = updatedFields.password;
+        }
+        if (updatedFields.nombres !== null && updatedFields.nombres !== juez.nombres) {
+            juez.nombres = capitalizeFirstLetter(updatedFields.nombres);
+            changes++;
+        }
+        if (updatedFields.apellidos !== null && updatedFields.apellidos !== juez.apellidos) {
+            juez.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
+            changes++;
+        }
+        if (changes >= 1) {
+            juez.nombreCompleto = juez.nombres + " " + juez.apellidos;
+        }
+        if (updatedFields.correo !== null && updatedFields.correo !== juez.correo) {
+            juez.correo = updatedFields.correo;
+        }
+        if (updatedFields.sexoId !== null && updatedFields.sexoId !== juez.sexoId) {
+            juez.sexoId = updatedFields.sexoId;
+        }
+        if (updatedFields.juzgadoId !== null && updatedFields.juzgadoId !== juez.juzgadoId) {
+            juez.juzgadoId = updatedFields.juzgadoId;
+        }
+
+        await juez.save();
+
+        if (juez) {
+            return juez;
+        }
+        else {
+            return null;
+        }
+    }
+
+    async modifyUserSecretary(updatedFields) {
+        const secre = await Secretario.findOne({
+            where: {
+                id: {
+                    [Op.eq]: updatedFields.id
+                }
+            }
+        });
+
+        let changes = 0;
+        // Actualiza los campos si no son nulos en updatedFields
+        if (updatedFields.password !== null && updatedFields.password !== secre.password) {
+            secre.password = updatedFields.password;
+        }
+        if (updatedFields.nombres !== null && updatedFields.nombres !== secre.nombres) {
+            secre.nombres = capitalizeFirstLetter(updatedFields.nombres);
+            changes++;
+        }
+        if (updatedFields.apellidos !== null && updatedFields.apellidos !== secre.apellidos) {
+            secre.apellidos = capitalizeFirstLetter(updatedFields.apellidos);
+            changes++;
+        }
+        if (changes >= 1) {
+            secre.nombreCompleto = secre.nombres + " " + secre.apellidos;
+        }
+        if (updatedFields.correo !== null && updatedFields.correo !== secre.correo) {
+            secre.correo = updatedFields.correo;
+        }
+        if (updatedFields.sexoId !== null && updatedFields.sexoId !== secre.sexoId) {
+            secre.sexoId = updatedFields.sexoId;
+        }
+        if (updatedFields.juzgadoId !== null && updatedFields.juzgadoId !== secre.juzgadoId) {
+            secre.juzgadoId = updatedFields.juzgadoId;
+        }
+
+        await secre.save();
+
+        if (secre) {
+            return secre;
+        }
+        else {
+            return null;
+        }
+    }
+}

@@ -4,20 +4,6 @@ import cors from "cors";
 import { uploadFile } from './classes/controller/FormController.js'
 import { uploadMiddleware } from './classes/controller/FormController.js'
 
-
-
-//import { insertFileLink, getPDFLinkByNaturalPersonId } from './classes/model/PDFForm.js';
-
-
-
-
-
-
-//const express = require('express');
-//const { uploadFile, uploadMiddleware } = ('./classes/controller/FormController');
-
-
-
 const app = express()
 const port = process.env.PORT || 3001;
 
@@ -90,14 +76,14 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
     try {
         let userControl = new UserController();
-        let user = await userControl.searchUser(req.body.username, req.body.password);
+        let user = await userControl.searchUser(req.body.type, req.body.username, req.body.password);
 
         if (user) {
             res.json({
                 loginSuccess: true,
                 user: {
                     ...user,
-                     
+
                 }
             });
         } else {
@@ -105,43 +91,69 @@ app.post("/login", async (req, res) => {
         }
     }
     catch (e) {
-        res.status(500).send(e); 
+        res.status(500).send(e);
     }
 });
-
 
 // Información más reciente de 'Mi Perfil' - Persona Natural
-app.post("/profile-person", async (req, res) => {
+// app.post("/profile-person", async (req, res) => {
+//     try {
+//         let typeControl = new TypeUserController();
+//         const user = await typeControl.searchForNPUser(req.body.username, req.body.password);
+//         console.log(user)
+//         if (user) {
+//             res.send(user);
+//             console.log(user);
+//         }
+//         else {
+//             res.status(404).json({ error: "Usuario no encontrado." });
+//         }
+//     }
+//     catch (e) {
+//         res.send(e);
+//     }
+// });
+
+// // Información más reciente de 'Mi Perfil' - Juez
+// app.post("/profile-judge", async (req, res) => {
+//     console.log("Petición recibida en /profile-judge");
+//     try {
+//         let typeControl = new TypeUserController();
+//         const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
+
+//         if (juez) {
+//             res.send(juez);
+//             console.log(juez);
+//         }
+//         else {
+//             res.status(404).json({ error: "Usuario no encontrado." });
+//         }
+//     }
+//     catch (e) {
+//         res.send(e);
+//     }
+// });
+
+app.post("/profile", async (req, res) => {
     try {
         let typeControl = new TypeUserController();
-        const user = await typeControl.searchForNPUser(req.body.username, req.body.password);
-        console.log(user)
+        var user;
+
+        if (req.body.type == 0) {
+            user = await typeControl.searchForNPUser(req.body.username, req.body.password);
+        }
+        else if (req.body.type == 1) {
+            user = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
+        }
+        else {
+            user = await typeControl.searchForSecretaryUser(req.body.username, req.body.password);
+        }
+
         if (user) {
             res.send(user);
-            console.log(user);
         }
         else {
-            res.status(404).json({ error: "Usuario no encontrado." });
-        }
-    }
-    catch (e) {
-        res.send(e);
-    }
-});
-
-// Información más reciente de 'Mi Perfil' - Juez
-app.post("/profile-judge", async (req, res) => {
-    console.log("Petición recibida en /profile-judge");
-    try {
-        let typeControl = new TypeUserController();
-        const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
-
-        if (juez) {
-            res.send(juez);
-            console.log(juez);
-        }
-        else {
-            res.status(404).json({ error: "Usuario no encontrado." });
+            res.status(404).json({ error: "Usuario no encontrado. " });
         }
     }
     catch (e) {
@@ -150,40 +162,67 @@ app.post("/profile-judge", async (req, res) => {
 });
 
 // Modificar info en mi 'Mi Perfil' - Persona 
-app.post("/modify-profile-person", async (req, res) => {
-    try {
-        let userControl = new UserController();
-        let modifiedUser = await userControl.modifyUserPerson(req.body);
+// app.post("/modify-profile-person", async (req, res) => {
+//     try {
+//         let userControl = new UserController();
+//         let modifiedUser = await userControl.modifyUserPerson(req.body);
 
-        if (modifiedUser) {
-            res.send(modifiedUser);
+//         if (modifiedUser) {
+//             res.send(modifiedUser);
+//         }
+//         else {
+//             res.status(404).json({ message: "Usuario no encontrado" });
+//         }
+//     }
+//     catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: "Error al modificar el usuario." });
+//     }
+// });
+
+// // Modificar info en mi 'Mi Perfil' - Juez 
+// app.post("/modify-profile-judge", async (req, res) => {
+//     try {
+//         let userControl = new UserController();
+//         let modifiedUser = await userControl.modifyUserJudge(req.body);
+
+//         if (modifiedUser) {
+//             res.send(modifiedUser);
+//         }
+//         else {
+//             res.status(404).json({ message: "Usuario no encontrado" });
+//         }
+//     }
+//     catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: "Error al modificar el usuario." });
+//     }
+// });
+
+app.post("/modify-profile", async (req, res) => {
+    try {
+        let typeControl = new TypeUserController();
+        var modifiedUser;
+
+        if (req.body.type == 0) {
+            modifiedUser = await typeControl.modifiedUser(req.body);
+        }
+        else if (req.body.type == 1) {
+            modifiedUser = await typeControl.modifiedUser(req.body);
         }
         else {
-            res.status(404).json({ message: "Usuario no encontrado" });
+            user = await typeControl.modifiedUser(req.body);
         }
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Error al modificar el usuario." });
-    }
-});
 
-// Modificar info en mi 'Mi Perfil' - Juez 
-app.post("/modify-profile-judge", async (req, res) => {
-    try {
-        let userControl = new UserController();
-        let modifiedUser = await userControl.modifyUserJudge(req.body);
-
-        if (modifiedUser) {
-            res.send(modifiedUser);
+        if (user) {
+            res.send(user);
         }
         else {
-            res.status(404).json({ message: "Usuario no encontrado" });
+            res.status(404).json({ error: "Usuario no encontrado. " });
         }
     }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Error al modificar el usuario." });
+    catch (e) {
+        res.send(e);
     }
 });
 
@@ -222,7 +261,7 @@ app.post("/download-pdf", async (req, res) => {
         console.log(pdfLink);
 
         if (pdfLink) {
-            res.json({ link: pdfLink});
+            res.json({ link: pdfLink });
         } else {
             res.status(404).json({ error: "PDF no encontrado." });
         }
