@@ -201,21 +201,21 @@ app.post("/profile", async (req, res) => {
 
 app.post("/modify-profile", async (req, res) => {
     try {
-        let typeControl = new TypeUserController();
+        let userControl = new UserController();
         var modifiedUser;
 
         if (req.body.type == 0) {
-            modifiedUser = await typeControl.modifiedUser(req.body);
+            modifiedUser = await userControl.modifyUserPerson(req.body);
         }
         else if (req.body.type == 1) {
-            modifiedUser = await typeControl.modifiedUser(req.body);
+            modifiedUser = await userControl.modifyUserJudge(req.body);
         }
         else {
-            user = await typeControl.modifiedUser(req.body);
+            modifiedUser = await userControl.modifyUserSecretary(req.body);
         }
 
-        if (user) {
-            res.send(user);
+        if (modifiedUser) {
+            res.send(modifiedUser);
         }
         else {
             res.status(404).json({ error: "Usuario no encontrado. " });

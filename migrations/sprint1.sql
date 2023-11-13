@@ -144,72 +144,72 @@ VALUES (90123456, 'Javier', 'Vega', 'Javier Vega', 'Av. Los Heroes 789, Puno', 3
 INSERT INTO "Demandado" (dni, nombres, apellidos, "nombreCompleto", direccion, "sexoId", "expedienteId")
 VALUES (12345987, 'Sara', 'Rojas', 'Sara Rojas', 'Jr. Las Magnolias 101, Iquitos', 2, 20);
 
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('carlos.gonzales', 'password123', 'Carlos Alberto', 'Gonzales Paredes', 'Carlos Alberto Gonzales Paredes', 47856231, 'carlos@email.com', 1, 1);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('maria.quispe', 'password123', 'Maria Luisa', 'Quispe Huaman', 'Maria Luisa Quispe Huaman', 39284756, 'maria@email.com', 2, 2);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('juan.ramirez', 'password123', 'Juan', 'Ramirez Vargas', 'Juan Ramirez Vargas', 58392047, 'juan@email.com', 3, 3);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('rosa.torres', 'password123', 'Rosa Maria', 'Torres Fernandez', 'Rosa Maria Torres Fernandez', 69483720, 'rosa@email.com', 2, 4);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('pedro.mendoza', 'password123', 'Pedro', 'Mendoza Lopez', 'Pedro Mendoza Lopez', 78563492, 'pedro@email.com', 1, 5);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('ana.castillo', 'password123', 'Ana', 'Castillo Gutierrez', 'Ana Castillo Gutierrez', 89674523, 'ana@email.com', 3, 6);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('luis.perez', 'password123', 'Luis Enrique', 'Perez Salas', 'Luis Enrique Perez Salas', 90785634, 'luis@email.com', 3, 7);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('julia.diaz', 'password123', 'Julia', 'Diaz Moreno', 'Julia Diaz Moreno', 61827394, 'julia@email.com', 2, 8);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('roberto.vega', 'password123', 'Roberto', 'Vega Ortiz', 'Roberto Vega Ortiz', 72938465, 'roberto@email.com', 1, 9);
-INSERT INTO "PersonaNatural" (username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
-VALUES ('carmen.rojas', 'password123', 'Carmen', 'Rojas Maldonado', 'Carmen Rojas Maldonado', 84049576, 'carmen@email.com', 2, 10);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'carlos.gonzales', 'password123', 'Carlos Alberto', 'Gonzales Paredes', 'Carlos Alberto Gonzales Paredes', 47856231, 'carlos@email.com', 1, 1);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'maria.quispe', 'password123', 'Maria Luisa', 'Quispe Huaman', 'Maria Luisa Quispe Huaman', 39284756, 'maria@email.com', 2, 2);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'juan.ramirez', 'password123', 'Juan', 'Ramirez Vargas', 'Juan Ramirez Vargas', 58392047, 'juan@email.com', 3, 3);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'rosa.torres', 'password123', 'Rosa Maria', 'Torres Fernandez', 'Rosa Maria Torres Fernandez', 69483720, 'rosa@email.com', 2, 4);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'pedro.mendoza', 'password123', 'Pedro', 'Mendoza Lopez', 'Pedro Mendoza Lopez', 78563492, 'pedro@email.com', 1, 5);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'ana.castillo', 'password123', 'Ana', 'Castillo Gutierrez', 'Ana Castillo Gutierrez', 89674523, 'ana@email.com', 3, 6);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'luis.perez', 'password123', 'Luis Enrique', 'Perez Salas', 'Luis Enrique Perez Salas', 90785634, 'luis@email.com', 3, 7);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'julia.diaz', 'password123', 'Julia', 'Diaz Moreno', 'Julia Diaz Moreno', 61827394, 'julia@email.com', 2, 8);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'roberto.vega', 'password123', 'Roberto', 'Vega Ortiz', 'Roberto Vega Ortiz', 72938465, 'roberto@email.com', 1, 9);
+INSERT INTO "PersonaNatural" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, correo, "sexoId", "expedienteId") 
+VALUES (0, 'carmen.rojas', 'password123', 'Carmen', 'Rojas Maldonado', 'Carmen Rojas Maldonado', 84049576, 'carmen@email.com', 2, 10);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_carlos', 'password123', 'Carlos', 'Fernandez', 'Carlos Fernandez', '87778512', 'JZ12345', 'carlos@email.com', 1, 1);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_carlos', 'password123', 'Carlos', 'Fernandez', 'Carlos Fernandez', '87778512', 'JZ12345', 'carlos@email.com', 1, 1);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_ana', 'password456', 'Ana', 'Lopez', 'Ana Lopez', '75293393', 'JZ23456', 'ana@email.com', 2, 2);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_ana', 'password456', 'Ana', 'Lopez', 'Ana Lopez', '75293393', 'JZ23456', 'ana@email.com', 2, 2);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_luis', 'password789', 'Luis', 'Ramirez', 'Luis Ramirez', '93130263', 'JZ34567', 'luis@email.com', 1, 3);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_luis', 'password789', 'Luis', 'Ramirez', 'Luis Ramirez', '93130263', 'JZ34567', 'luis@email.com', 1, 3);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_maria', 'password012', 'Maria', 'Gonzales', 'Maria Gonzales', '24192181', 'JZ45678', 'maria@email.com', 2, 4);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_maria', 'password012', 'Maria', 'Gonzales', 'Maria Gonzales', '24192181', 'JZ45678', 'maria@email.com', 2, 4);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_juan', 'password345', 'Juan', 'Martinez', 'Juan Martinez', '40430787', 'JZ56789', 'juan@email.com', 1, 5);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_juan', 'password345', 'Juan', 'Martinez', 'Juan Martinez', '40430787', 'JZ56789', 'juan@email.com', 1, 5);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_rosa', 'password678', 'Rosa', 'Perez', 'Rosa Perez', '67059745', 'JZ67890', 'rosa@email.com', 2, 6);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_rosa', 'password678', 'Rosa', 'Perez', 'Rosa Perez', '67059745', 'JZ67890', 'rosa@email.com', 2, 6);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_pedro', 'password901', 'Pedro', 'Castillo', 'Pedro Castillo', '92386901', 'JZ78901', 'pedro@email.com', 1, 7);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_pedro', 'password901', 'Pedro', 'Castillo', 'Pedro Castillo', '92386901', 'JZ78901', 'pedro@email.com', 1, 7);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_lucia', 'password234', 'Lucia', 'Santos', 'Lucia Santos', '21518226', 'JZ89012', 'lucia@email.com', 2, 8);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_lucia', 'password234', 'Lucia', 'Santos', 'Lucia Santos', '21518226', 'JZ89012', 'lucia@email.com', 2, 8);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_sergio', 'password567', 'Sergio', 'Gomez', 'Sergio Gomez', '83440589', 'JZ90123', 'sergio@email.com', 1, 9);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_sergio', 'password567', 'Sergio', 'Gomez', 'Sergio Gomez', '83440589', 'JZ90123', 'sergio@email.com', 1, 9);
 
-INSERT INTO "Juez" (username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
-VALUES ('juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12346', 'carmen@email.com', 2, 10);
+INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId")
+VALUES (1, 'juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12346', 'carmen@email.com', 2, 10);
 
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
-VALUES (1, '17/10/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf', 1);
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", estado) 
+VALUES (1, '17/10/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf', 1, 0);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
-VALUES (2, '10/02/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609426/SDDA/ja4l4logawlmr9pcc70f.pdf', 2);
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", estado) 
+VALUES (2, '10/02/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609426/SDDA/ja4l4logawlmr9pcc70f.pdf', 2, 0);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
-VALUES (3, '07/03/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609525/SDDA/pe5ouokdido9fd8gwm1j.pdf', 3);
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", estado) 
+VALUES (3, '07/03/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609525/SDDA/pe5ouokdido9fd8gwm1j.pdf', 3, 0);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
-VALUES (4, '19/04/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609603/SDDA/x4n8j5x3fn8yra7o6tw5.pdf', 4);
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", estado) 
+VALUES (4, '19/04/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609603/SDDA/x4n8j5x3fn8yra7o6tw5.pdf', 4, 0);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId") 
-VALUES (5, '26/12/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609663/SDDA/j4pewocxgabzhbjuayzu.pdf', 5);
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", estado) 
+VALUES (5, '26/12/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609663/SDDA/j4pewocxgabzhbjuayzu.pdf', 5, 0);
 
 
 INSERT INTO "Demanda" (nro_demanda, fecha_emision, descripcion, "juezId", "personaNaturalId", "demandadoId", "estadoDemandaId", "formularioId")

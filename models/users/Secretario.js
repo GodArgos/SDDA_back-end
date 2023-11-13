@@ -58,22 +58,22 @@ export const Secretario = sequelize.define(
     }
 )
 
-Juez .belongsTo(Sexo, {
+Secretario .belongsTo(Sexo, {
     foreignKey: "sexoId",
     sourceKey: "id"
 })
 
-Sexo .hasMany(Juez, {
+Sexo .hasMany(Secretario, {
     foreignKey: "sexoId",
     sourceKey: "id"
 })
 
-Juez .belongsTo(Juzgado, {
+Secretario .belongsTo(Juzgado, {
     foreignKey: "juzgadoId",
     sourceKey: "id"
 })
 
-Juzgado .hasMany(Juez, {
+Juzgado .hasMany(Secretario, {
     foreignKey: "juzgadoId",
     sourceKey: "id"
 })
