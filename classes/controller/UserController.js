@@ -128,23 +128,20 @@ export class UserController {
         // Intenta buscar el usuario en la tabla PersonaNatural
         let typeControl = new TypeUserController();
 
-        var search;
         if (_type == 0) {
-            search = await typeControl.searchForNPUser(_username, _password);
+            const search = await typeControl.searchForNPUser(_username, _password);
+            return search;
         }
         else if (_type == 1) {
-            search = await typeControl.searchForJudgeUser(_username, _password);
-        }
-        else {
-            search = await typeControl.searchForSecretaryUser(_username, _password);
-        }
-
-        if (search) {
+            const search = await typeControl.searchForJudgeUser(_username, _password);
             return search;
         }
         else {
-            return null;
+            const search = await typeControl.searchForSecretaryUser(_username, _password);
+            return search;
         }
+
+        return null;
     }
 
     async modifyUserPerson(updatedFields) {
