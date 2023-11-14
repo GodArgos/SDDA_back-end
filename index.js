@@ -145,8 +145,11 @@ app.post("/profile", async (req, res) => {
         else if (req.body.type == 1) {
             user = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
         }
-        else {
+        else if (req.body.type == 2) {
             user = await typeControl.searchForSecretaryUser(req.body.username, req.body.password);
+        }
+        else{
+            user = null;
         }
 
         if (user) {
