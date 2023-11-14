@@ -24,6 +24,9 @@ export const Demanda = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        fecha_audiencia: {
+            type: DataTypes.STRING
+        },
         descripcion: {
             type: DataTypes.STRING
         }

@@ -1,8 +1,6 @@
 import { sequelize } from "./database/database.js";
 import express from "express";
 import cors from "cors";
-import { uploadFile } from './classes/controller/FormController.js'
-import { uploadMiddleware } from './classes/controller/FormController.js'
 
 const app = express()
 const port = process.env.PORT || 3001;
@@ -41,6 +39,8 @@ import { ExpedientController } from "./classes/controller/ExpedientController.js
 import { DemandController } from "./classes/controller/DemandController.js";
 import { TypeUserController } from "./classes/controller/TypeUserController.js";
 import { DemandRequestController } from "./classes/controller/DemandRequestController.js";
+import { uploadFile } from './classes/controller/FormController.js'
+import { uploadMiddleware } from './classes/controller/FormController.js'
 
 // ------------------------------------ Endpoints ------------------------------------ 
 
@@ -381,5 +381,23 @@ app.post("/search-expedient", async (req, res) => {
     }
     catch (e) {
         res.send(e);
+    }
+});
+
+app.post("/set-demanda-date", async (req, res) => {
+    try {
+        let demandControl = new DemandController();
+        const status = await demandControl.setHearingDate(req.body.id, req.body.date);
+
+        if (status == 200) {
+            res.send({ message: "Se selecciono una fecha de audiencia exitosamente." })
+        }
+        else {
+            res.status(404).json({ message: "No se pudo seleccionar/cambiar la fecha de audiencia." });
+        }
+    }
+    catch (e) {
+        console.error(error);
+        res.status(500).json({ error: "Error al encontrar demanda." });
     }
 });

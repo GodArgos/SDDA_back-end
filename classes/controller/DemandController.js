@@ -82,7 +82,7 @@ export class DemandController {
 
                 const form = await FormularioIngreso.findByPk(fields.form_id);
                 form.estado = 1;
-                await form.save;
+                await form.save();
     
                 return 200;
             } else {
@@ -91,6 +91,27 @@ export class DemandController {
         } catch (error) {
             console.error("Error al crear demanda:", error.message);
             return 404; // o puedes retornar el mensaje de error si lo prefieres
+        }
+    }
+
+    async setHearingDate(demandId, date){
+        const demanda = await Demanda.findByPk(demandId, {
+            include: [
+                { model: Juez },
+                { model: PersonaNatural },
+                { model: Demandado },
+                { model: EstadoDemanda },
+                { model: FormularioIngreso }
+            ]
+        });
+
+        if (demanda) {
+            demanda.fecha_audiencia = date;
+            await demanda.save();
+            return 200;
+        }
+        else {
+            return 404;
         }
     }
 }
