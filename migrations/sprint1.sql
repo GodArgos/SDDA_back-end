@@ -246,3 +246,36 @@ INSERT INTO "FormRENIEC" (dni, nombres, apellidos, "nombreCompleto", direccion, 
 INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (21, 73217549, 21, 21, 21);
 INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (22, 74155186, 22, 22, 22);
 INSERT INTO "Expediente" (nro_expediente, dni, "formReniecId", "formSunarpId", "formMinTrabajoId") VALUES (23, 77697060, 23, 23, 23);
+
+
+------ SPRINT 2 / INSERTS "SECRETARIO" -------
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_roberta', 'sec_pass1', 'Roberta', 'Mendez', 'Roberta Mendez', '11223344', 'SEC001', 'roberta.mendez@email.com', 1, 2);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_felipe', 'sec_pass2', 'Felipe', 'Garcia', 'Felipe Garcia', '22334455', 'SEC002', 'felipe.garcia@email.com', 2, 4);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_claudia', 'sec_pass3', 'Claudia', 'Fernandez', 'Claudia Fernandez', '33445566', 'SEC003', 'claudia.fernandez@email.com', 3, 6);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_mario', 'sec_pass4', 'Mario', 'Ruiz', 'Mario Ruiz', '44556677', 'SEC004', 'mario.ruiz@email.com', 1, 8);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_silvia', 'sec_pass5', 'Silvia', 'Martinez', 'Silvia Martinez', '55667788', 'SEC005', 'silvia.martinez@email.com', 2, 10);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_eduardo', 'sec_pass6', 'Eduardo', 'Jimenez', 'Eduardo Jimenez', '66778899', 'SEC006', 'eduardo.jimenez@email.com', 3, 3);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_lorena', 'sec_pass7', 'Lorena', 'Castro', 'Lorena Castro', '77889900', 'SEC007', 'lorena.castro@email.com', 1, 5);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_gustavo', 'sec_pass8', 'Gustavo', 'Alvarez', 'Gustavo Alvarez', '88990011', 'SEC008', 'gustavo.alvarez@email.com', 2, 7);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_patricia', 'sec_pass9', 'Patricia', 'Ortiz', 'Patricia Ortiz', '99001122', 'SEC009', 'patricia.ortiz@email.com', 3, 9);
+
+INSERT INTO "Secretario" (tipo, username, password, nombres, apellidos, "nombreCompleto", dni, nro_colegiatura, correo, "sexoId", "juzgadoId") 
+VALUES (2, 'sec_ivan', 'sec_pass10', 'Ivan', 'Herrera', 'Ivan Herrera', '12332111', 'SEC010', 'ivan.herrera@gmai.com', 1, 4);

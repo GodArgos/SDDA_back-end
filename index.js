@@ -387,7 +387,7 @@ app.post("/search-expedient", async (req, res) => {
     }
 });
 
-app.post("/set-demanda-date", async (req, res) => {
+app.post("/set-demand-date", async (req, res) => {
     try {
         let demandControl = new DemandController();
         const status = await demandControl.setHearingDate(req.body.id, req.body.date);
