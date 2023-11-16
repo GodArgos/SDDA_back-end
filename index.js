@@ -213,8 +213,11 @@ app.post("/modify-profile", async (req, res) => {
         else if (req.body.type == 1) {
             modifiedUser = await userControl.modifyUserJudge(req.body);
         }
-        else {
+        else if (req.body.type == 2) {
             modifiedUser = await userControl.modifyUserSecretary(req.body);
+        }
+        else{
+            modifiedUser = null;
         }
 
         if (modifiedUser) {
