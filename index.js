@@ -96,43 +96,43 @@ app.post("/login", async (req, res) => {
 });
 
 // Información más reciente de 'Mi Perfil' - Persona Natural
-// app.post("/profile-person", async (req, res) => {
-//     try {
-//         let typeControl = new TypeUserController();
-//         const user = await typeControl.searchForNPUser(req.body.username, req.body.password);
-//         console.log(user)
-//         if (user) {
-//             res.send(user);
-//             console.log(user);
-//         }
-//         else {
-//             res.status(404).json({ error: "Usuario no encontrado." });
-//         }
-//     }
-//     catch (e) {
-//         res.send(e);
-//     }
-// });
+app.post("/profile-person", async (req, res) => {
+    try {
+        let typeControl = new TypeUserController();
+        const user = await typeControl.searchForNPUser(req.body.username, req.body.password);
+        console.log(user)
+        if (user) {
+            res.send(user);
+            console.log(user);
+        }
+        else {
+            res.status(404).json({ error: "Usuario no encontrado." });
+        }
+    }
+    catch (e) {
+        res.send(e);
+    }
+});
 
 // // Información más reciente de 'Mi Perfil' - Juez
-// app.post("/profile-judge", async (req, res) => {
-//     console.log("Petición recibida en /profile-judge");
-//     try {
-//         let typeControl = new TypeUserController();
-//         const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
+app.post("/profile-judge", async (req, res) => {
+    console.log("Petición recibida en /profile-judge");
+    try {
+        let typeControl = new TypeUserController();
+        const juez = await typeControl.searchForJudgeUser(req.body.username, req.body.password);
 
-//         if (juez) {
-//             res.send(juez);
-//             console.log(juez);
-//         }
-//         else {
-//             res.status(404).json({ error: "Usuario no encontrado." });
-//         }
-//     }
-//     catch (e) {
-//         res.send(e);
-//     }
-// });
+        if (juez) {
+            res.send(juez);
+            console.log(juez);
+        }
+        else {
+            res.status(404).json({ error: "Usuario no encontrado." });
+        }
+    }
+    catch (e) {
+        res.send(e);
+    }
+});
 
 app.post("/profile", async (req, res) => {
     try {
