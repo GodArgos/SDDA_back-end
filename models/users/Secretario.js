@@ -4,6 +4,7 @@ import { sequelize } from "../../database/database.js";
 // Foreign Keys
 import { Sexo } from "../other/Sexo.js";
 import { Juzgado } from "../other/Juzgado.js";
+import { Juez } from "./Juez.js";
 
 export const Secretario = sequelize.define(
     "Secretario", {
@@ -75,5 +76,15 @@ Secretario .belongsTo(Juzgado, {
 
 Juzgado .hasMany(Secretario, {
     foreignKey: "juzgadoId",
+    sourceKey: "id"
+})
+
+Secretario .belongsTo(Juez, {
+    foreignKey: "juezId",
+    sourceKey: "id"
+})
+
+Juez .hasMany(Secretario, {
+    foreignKey: "juezId",
     sourceKey: "id"
 })

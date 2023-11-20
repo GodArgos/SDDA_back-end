@@ -49,6 +49,54 @@ export class DemandController {
         }
     }
 
+    async getAllDemandsFilter(state) {
+        const demandas = await Demanda.findAll({
+            where: {
+                estadoDemandaId : {
+                    [Op.eq] : state  
+                }
+            },
+            include: [
+                { model: Juez },
+                { model: PersonaNatural },
+                { model: Demandado },
+                { model: EstadoDemanda },
+                { model: FormularioIngreso }
+            ]
+        });
+
+        if (demandas) {
+            return demandas;
+        }
+        else {
+            return null;
+        }
+    }
+
+    async getMyDemands(personaId){
+        const demandas = await Demanda.findAll({
+            where: {
+                personaNaturalId : {
+                    [Op.eq] : personaId  
+                }
+            },
+            include: [
+                { model: Juez },
+                { model: PersonaNatural },
+                { model: Demandado },
+                { model: EstadoDemanda },
+                { model: FormularioIngreso }
+            ]
+        });
+
+        if (demandas) {
+            return demandas;
+        }
+        else {
+            return null;
+        }
+    }
+
     async createDemand(fields) {
         try {
             const def = new Defendant(
@@ -76,7 +124,7 @@ export class DemandController {
                     juezId: fields.juez_id,
                     personaNaturalId: fields.persona_id,
                     demandadoId: defId,
-                    estadoDemandaId: 2,
+                    estadoDemandaId: 1,
                     formularioId: fields.form_id
                 });
 

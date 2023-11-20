@@ -1,2 +1,5 @@
-INSERT INTO "EstadoDemanda" (nombre) VALUES ('Finalizado');
-INSERT INTO "EstadoDemanda" (nombre) VALUES ('En Proceso');
+INSERT INTO "EstadoDemanda" (nombre) VALUES ('RECIBIDA');
+INSERT INTO "EstadoDemanda" (nombre) VALUES ('EN PROCESO');
+INSERT INTO "EstadoDemanda" (nombre) VALUES ('FINALIZADA');
+INSERT INTO "EstadoDemanda" (nombre) VALUES ('RECHAZADA');
+

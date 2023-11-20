@@ -232,11 +232,6 @@ app.post("/modify-profile", async (req, res) => {
     }
 });
 
-// Descargar pdf solicitud de demanda "PLANTILLA"
-app.post("/plantilla", (req, res) => {
-    res.redirect('https://drive.google.com/uc?export=download&id=1oaJt680jc0dfNM9hQ5UkmClf_oPGSP6l');
-});
-
 // Crear solicitud de demanda
 app.post('/upload', uploadMiddleware, uploadFile);
 
@@ -390,6 +385,9 @@ app.post("/search-expedient", async (req, res) => {
     }
 });
 
+
+// SPRINT 2
+
 app.post("/set-demand-date", async (req, res) => {
     try {
         let demandControl = new DemandController();
@@ -407,3 +405,44 @@ app.post("/set-demand-date", async (req, res) => {
         res.status(500).json({ error: "Error al encontrar demanda." });
     }
 });
+
+
+
+
+// SPRINT 3
+app.post("/get-all-demands-filter", async (req, res) => {
+    try {
+        let demandControl = new DemandController();
+        const demandas = await demandControl.getAllDemandsFilter(req.body.state);
+
+        if (demandas) {
+            res.send(demandas);
+        }
+        else {
+            res.status(404).json({ message: "No hay demandas." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al traer demandas." });
+    }
+});
+
+app.post("/my-demands", async (req, res) => {
+    try {
+        let demandControl = new DemandController();
+        const demandas = await demandControl.getMyDemands(req.body.id);
+
+        if (demandas) {
+            res.send(demandas);
+        }
+        else {
+            res.status(404).json({ message: "No hay demandas." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al traer demandas." });
+    }
+});
+
