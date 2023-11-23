@@ -1,3 +1,5 @@
+import { Op } from "sequelize";
+
 import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 import { Juez } from "../../models/users/Juez.js";
 import { Demandado } from "../../models/users/Demandado.js";
