@@ -6,13 +6,18 @@ import { PersonaNatural } from "../../models/users/PersonaNatural.js";
 export class DemandRequestController {
 
     async getAllDemandReq() {
-        const entries = await FormularioIngreso.findAll({
+        let entries = await FormularioIngreso.findAll({
             include: [
                 { model: PersonaNatural }
             ], // Incluye la tabla relacionada PersonaNatural
         });
         
         if (entries) {
+            entries = entries.sort((a, b) => {
+                const fechaA = a.fecha_emision.split('/').reverse().join('');
+                const fechaB = b.fecha_emision.split('/').reverse().join('');
+                return fechaB.localeCompare(fechaA);
+            });
             return entries;
         }
         else {

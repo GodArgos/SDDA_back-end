@@ -33,7 +33,7 @@ export class DemandController {
     }
 
     async getAllDemands() {
-        const demandas = await Demanda.findAll({
+        let demandas = await Demanda.findAll({
             include: [
                 { model: Juez },
                 { model: PersonaNatural },
@@ -44,6 +44,12 @@ export class DemandController {
         });
 
         if (demandas) {
+            demandas = demandas.sort((a, b) => {
+                const fechaA = a.fecha_emision.split('/').reverse().join('');
+                const fechaB = b.fecha_emision.split('/').reverse().join('');
+                return fechaB.localeCompare(fechaA);
+            });
+
             return demandas;
         }
         else {
@@ -68,6 +74,11 @@ export class DemandController {
         });
 
         if (demandas) {
+            demandas = demandas.sort((a, b) => {
+                const fechaA = a.fecha_emision.split('/').reverse().join('');
+                const fechaB = b.fecha_emision.split('/').reverse().join('');
+                return fechaB.localeCompare(fechaA);
+            });
             return demandas;
         }
         else {
