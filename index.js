@@ -332,7 +332,7 @@ app.post("/create-demanda", async (req, res) => {
 app.post("/get-all-demands", async (req, res) => {
     try {
         let demandControl = new DemandController();
-        const demandas = await demandControl.getAllDemands();
+        const demandas = await demandControl.getAllDemands(req.body.juezId);
 
         if (demandas) {
             res.send(demandas);

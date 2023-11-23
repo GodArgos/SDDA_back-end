@@ -32,8 +32,13 @@ export class DemandController {
         }
     }
 
-    async getAllDemands() {
+    async getAllDemands(_juezId) {
         let demandas = await Demanda.findAll({
+            where: {
+                juezId: {
+                    [Op.eq] : _juezId 
+                }
+            },
             include: [
                 { model: Juez },
                 { model: PersonaNatural },
