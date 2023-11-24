@@ -7,6 +7,11 @@ export class DemandRequestController {
 
     async getAllDemandReq() {
         let entries = await FormularioIngreso.findAll({
+            where: {
+                estado: {
+                    [Op.eq]: 0
+                }
+            },
             include: [
                 { model: PersonaNatural }
             ], // Incluye la tabla relacionada PersonaNatural
@@ -27,11 +32,6 @@ export class DemandRequestController {
 
     async getDemandReq(reqid) {
         const entry = await FormularioIngreso.findByPk(reqid, {
-            where: {
-                estado: {
-                    [Op.eq]: 0
-                }
-            },
             include: [
                 { model: PersonaNatural }
             ], // Incluye la tabla relacionada PersonaNatural
