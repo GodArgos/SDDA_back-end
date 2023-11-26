@@ -116,17 +116,9 @@ export class DemandController {
     }
 
     async createDemand(fields) {
-        try {
-            const def = new Defendant(
-                fields.def_dni,
-                fields.def_names,
-                fields.def_lastnames,
-                fields.def_address,
-                fields.def_sexId
-            );
-    
+        try {    
             let userControl = new UserController();
-            const defId = await userControl.createDefendant(def);
+            const defId = await userControl.createDefendant(fields.def_dni);
     
             if (defId) {
                 const maxIdResultUser = await Demanda.max("id");

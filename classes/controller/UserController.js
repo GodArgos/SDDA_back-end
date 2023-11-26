@@ -79,14 +79,11 @@ export class UserController {
         }
     }
 
-    async createDefendant(Defendant) {
+    async createDefendant(defendantDNI) {
         // Ver si existe un usuario igual
         const checkDef = await Demandado.findOne({
             where: {
-                // [Op.eq]: [
-                //     { dni: Defendant.dni }
-                // ]
-                dni: Defendant.dni
+                dni: defendantDNI
             }
         });
 
@@ -96,18 +93,20 @@ export class UserController {
 
             // Buscar expediente con el dni del demandado
             let exControl = new ExpedientController();
-            let defExpedient = await exControl.searchExpedient(Defendant.dni);
+            let defExpedient = await exControl.searchExpedient(defendantDNI);
 
             if (defExpedient) {
+                let defRENIEC = defExpedient.FormRENIEC;
+
                 const newDef = await Demandado.create({
                     id: nextIdUser,
-                    nombres: Defendant.names,
-                    apellidos: Defendant.lastnames,
-                    nombreCompleto: Defendant.names + " " + Defendant.lastnames,
-                    dni: Defendant.dni,
-                    direccion: Defendant.address,
-                    sexoId: Defendant.sex,
-                    expedienteId: Defendant.id
+                    nombres: defRENIEC.nombres,
+                    apellidos: defRENIEC.apellidos,
+                    nombreCompleto: defRENIEC.nombres + " " + defRENIEC.apellidos,
+                    dni: defendantDNI,
+                    direccion: defRENIEC.direccion,
+                    sexoId: defRENIEC.sexoId,
+                    expedienteId: defExpedient.id
                 });
 
                 // Y retorna el id del nuevo demandado
@@ -116,7 +115,6 @@ export class UserController {
             else {
                 return null;
             }
-
         }
         else {
             return checkDef.id;
