@@ -3,6 +3,7 @@ import { sequelize } from "../../database/database.js";
 
 // Foreign Keys
 import { PersonaNatural } from "../users/PersonaNatural.js";
+import { EstadoDemanda } from "../other/EstadoDemanda.js";
 
 export const FormularioIngreso = sequelize.define(
     "FormularioIngreso", {
@@ -23,10 +24,6 @@ export const FormularioIngreso = sequelize.define(
         pdf_path: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        estado: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     },
     {
@@ -42,5 +39,15 @@ FormularioIngreso .belongsTo(PersonaNatural, {
 
 PersonaNatural .hasMany(FormularioIngreso, {
     foreignKey: "personaNaturalId",
+    sourceKey: "id"
+})
+
+FormularioIngreso .belongsTo(EstadoDemanda, {
+    foreignKey: "estadoDemandaId",
+    sourceKey: "id"
+})
+
+EstadoDemanda .hasMany(FormularioIngreso, {
+    foreignKey: "estadoDemandaId",
     sourceKey: "id"
 })

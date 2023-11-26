@@ -23,7 +23,8 @@ export async function insertFileLink(userId, link) {
       nro_solicitud: nextIdUser,
       fecha_emision: date,
       pdf_path: link,
-      personaNaturalId: userId
+      personaNaturalId: userId,
+      estadoId: 1 
     });
 
     return 200;
