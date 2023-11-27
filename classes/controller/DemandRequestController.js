@@ -8,15 +8,15 @@ export class DemandRequestController {
     async getAllDemandReq() {
         let entries = await FormularioIngreso.findAll({
             where: {
-                estado: {
-                    [Op.eq]: 0
+                estadoDemandaId: {
+                    [Op.eq]: 1
                 }
             },
             include: [
                 { model: PersonaNatural }
             ], // Incluye la tabla relacionada PersonaNatural
         });
-        
+
         if (entries) {
             entries = entries.sort((a, b) => {
                 const fechaA = a.fecha_emision.split('/').reverse().join('');
@@ -34,7 +34,7 @@ export class DemandRequestController {
         const entry = await FormularioIngreso.findByPk(reqid, {
             include: [
                 { model: PersonaNatural }
-            ], // Incluye la tabla relacionada PersonaNatural
+            ]
         });
 
         if (entry) {
@@ -56,7 +56,6 @@ export class DemandRequestController {
         await formularioIngreso.destroy();
         return 200;
     }
-
 
     async getPDFLinkByPersonaNaturalId(pnatid) {
         try {
@@ -80,6 +79,60 @@ export class DemandRequestController {
         }
     }
 
+    async setDemandState(reqId, state, comment) {
+        const demreq = await FormularioIngreso.findByPk(reqId, {
+            include: [
+                { model: PersonaNatural }
+            ]
+        });
 
+        if (demreq) {
+            if (state == 3) {
+                if (comment && comment.trim()) {
+                    demreq.comentario = comment;
+                    demreq.estadoDemandaId = state;
+                    await demreq.save();
 
+                    return 200;
+                }
+                else {
+                    return 405;
+                }
+            }
+            else {
+                demreq.estadoDemandaId = state;
+                await demreq.save();
+
+                return 200;
+            }
+        }
+        else {
+            return 404;
+        }
+    }
+
+    async getMyDemandsReq(personaId) {
+        let demreq = await FormularioIngreso.findAll({
+            where: {
+                personaNaturalId: {
+                    [Op.eq]: personaId
+                }
+            },
+            include: [
+                { model: PersonaNatural }
+            ]
+        });
+
+        if (demreq) {
+            demreq = demreq.sort((a, b) => {
+                const fechaA = a.fecha_emision.split('/').reverse().join('');
+                const fechaB = b.fecha_emision.split('/').reverse().join('');
+                return fechaB.localeCompare(fechaA);
+            });
+            return demreq;
+        }
+        else {
+            return null;
+        }
+    }
 }

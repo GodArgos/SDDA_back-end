@@ -1,16 +1,8 @@
-//const cloudinary = require('../../utils/cloudinaryConfig');
-//const { insertFileLink } = require('../../classes/model/PDFForm');
-//import FormularioIngreso from '../../models/forms/FormularioIngreso';
-//import upload from '../../utils/multerConfig.js';
 import { Readable } from 'stream';
 import cloudinary from '../../utils/cloudinaryConfig.js';
 import { insertFileLink } from '../../classes/model/PDFForm.js';
 import multer from 'multer';
 
-
-
-
-//const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
 export const uploadFile = async (req, res) => {
@@ -51,39 +43,6 @@ export const uploadFile = async (req, res) => {
 
 
 export const uploadMiddleware = upload.single('file');
-
-
-
-/*export const uploadFile = async (req, res) => {
-  try {
-    const result = await cloudinary.uploader.upload_stream(
-      { resource_type: 'raw' },
-      async (error, result) => {
-
-
-        if (error) {
-          console.error("Error al subir a Cloudinary:", error);
-          return;
-        }
-
-        const link = result.secure_url;
-        const dbResult = await insertFileLink(link);
-        res.status(201).json(dbResult);
-      }
-    );
-    req.file.stream.pipe(result);
-
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};*/
-
-
-
-/*module.exports = {
-  uploadFile,
-  uploadMiddleware: upload.single('file')
-};*/
 
 
 

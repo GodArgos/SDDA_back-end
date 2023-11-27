@@ -24,7 +24,7 @@ export async function insertFileLink(userId, link) {
       fecha_emision: date,
       pdf_path: link,
       personaNaturalId: userId,
-      estadoId: 1 
+      estadoDemandaId: 1 
     });
 
     return 200;

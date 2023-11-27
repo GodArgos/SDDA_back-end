@@ -30,6 +30,10 @@ export const Demanda = sequelize.define(
         descripcion: {
             type: DataTypes.STRING
         }
+        ,
+        comentario: {
+            type: DataTypes.STRING
+        }
     },
     {
         freezeTableName: true,

@@ -36,7 +36,7 @@ export class DemandController {
         let demandas = await Demanda.findAll({
             where: {
                 juezId: {
-                    [Op.eq] : _juezId 
+                    [Op.eq]: _juezId
                 }
             },
             include: [
@@ -65,8 +65,8 @@ export class DemandController {
     async getAllDemandsFilter(state) {
         const demandas = await Demanda.findAll({
             where: {
-                estadoDemandaId : {
-                    [Op.eq] : state  
+                estadoDemandaId: {
+                    [Op.eq]: state
                 }
             },
             include: [
@@ -91,11 +91,11 @@ export class DemandController {
         }
     }
 
-    async getMyDemands(personaId){
+    async getMyDemands(personaId) {
         const demandas = await Demanda.findAll({
             where: {
-                personaNaturalId : {
-                    [Op.eq] : personaId  
+                personaNaturalId: {
+                    [Op.eq]: personaId
                 }
             },
             include: [
@@ -116,16 +116,16 @@ export class DemandController {
     }
 
     async createDemand(fields) {
-        try {    
+        try {
             let userControl = new UserController();
             const defId = await userControl.createDefendant(fields.def_dni);
-    
+
             if (defId) {
                 const maxIdResultUser = await Demanda.max("id");
                 const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
-    
+
                 let date = getActualDate();
-    
+
                 await Demanda.create({
                     id: nextIdUser,
                     nro_demanda: nextIdUser,
@@ -141,7 +141,7 @@ export class DemandController {
                 const form = await FormularioIngreso.findByPk(fields.form_id);
                 form.estado = 1;
                 await form.save();
-    
+
                 return 200;
             } else {
                 throw new Error("No se pudo crear el Demandado");
@@ -152,7 +152,7 @@ export class DemandController {
         }
     }
 
-    async setHearingDate(demandId, date){
+    async setHearingDate(demandId, date) {
         const demanda = await Demanda.findByPk(demandId, {
             include: [
                 { model: Juez },
@@ -165,8 +165,45 @@ export class DemandController {
 
         if (demanda) {
             demanda.fecha_audiencia = date;
+            demanda.estadoDemandaId = 2;
             await demanda.save();
             return 200;
+        }
+        else {
+            return 404;
+        }
+    }
+
+    async setDemandState(demandId, state, comment) {
+        const demanda = await Demanda.findByPk(demandId, {
+            include: [
+                { model: Juez },
+                { model: PersonaNatural },
+                { model: Demandado },
+                { model: EstadoDemanda },
+                { model: FormularioIngreso }
+            ]
+        });
+
+        if (demanda) {
+            if (state == 3) {
+                if (comment && comment.trim()) {
+                    demanda.comentario = comment;
+                    demanda.estadoDemandaId = state;
+                    await demanda.save();
+
+                    return 200;
+                }
+                else {
+                    return 405;
+                }
+            }
+            else {
+                demanda.estadoDemandaId = state;
+                await demanda.save();
+
+                return 200;
+            }
         }
         else {
             return 404;

@@ -198,19 +198,19 @@ INSERT INTO "Juez" (tipo, username, password, nombres, apellidos, "nombreComplet
 VALUES (1, 'juez_carmen', 'password890', 'Carmen', 'Vega', 'Carmen Vega', '34910024', 'JZ12346', 'carmen@email.com', 2, 10);
 
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estado") 
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estadoDemandaId") 
 VALUES (1, '17/10/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697520401/SDDA/zoaxe3hcu8oudmmrt0tf.pdf', 1, 1);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estado") 
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estadoDemandaId") 
 VALUES (2, '10/02/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609426/SDDA/ja4l4logawlmr9pcc70f.pdf', 2, 1);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estado") 
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estadoDemandaId") 
 VALUES (3, '07/03/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609525/SDDA/pe5ouokdido9fd8gwm1j.pdf', 3, 1);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estado") 
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estadoDemandaId") 
 VALUES (4, '19/04/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609603/SDDA/x4n8j5x3fn8yra7o6tw5.pdf', 4, 1);
 
-INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estado") 
+INSERT INTO "FormularioIngreso" (nro_solicitud, fecha_emision, pdf_path, "personaNaturalId", "estadoDemandaId") 
 VALUES (5, '26/12/2023', 'https://res.cloudinary.com/dikglrbuw/raw/upload/v1697609663/SDDA/j4pewocxgabzhbjuayzu.pdf', 5, 1);
 
 

@@ -148,7 +148,7 @@ app.post("/profile", async (req, res) => {
         else if (req.body.type == 2) {
             user = await typeControl.searchForSecretaryUser(req.body.username, req.body.password);
         }
-        else{
+        else {
             user = null;
         }
 
@@ -216,7 +216,7 @@ app.post("/modify-profile", async (req, res) => {
         else if (req.body.type == 2) {
             modifiedUser = await userControl.modifyUserSecretary(req.body);
         }
-        else{
+        else {
             modifiedUser = null;
         }
 
@@ -406,9 +406,6 @@ app.post("/set-demand-date", async (req, res) => {
     }
 });
 
-
-
-
 // SPRINT 3
 app.post("/get-all-demands-filter", async (req, res) => {
     try {
@@ -443,6 +440,61 @@ app.post("/my-demands", async (req, res) => {
     catch (error) {
         console.error(error);
         res.status(500).json({ error: "Error al traer demandas." });
+    }
+});
+
+app.post("/my-dem-req", async (req, res) => {
+    try {
+        let dreq = new DemandRequestController();
+        const demreq = await dreq.getMyDemandsReq(req.body.id);
+
+        if (demreq) {
+            res.send(demreq);
+        }
+        else {
+            res.status(404).json({ message: "No hay solicitudes de demanda." });
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al traer solicitudes de demanda." });
+    }
+});
+
+app.post("/set-state", async (req, res) => {
+    try {
+        if (req.body.type == "form") {
+            let dreq = new DemandRequestController();
+            const demreq = await dreq.setDemandState(req.body.id, req.body.state, req.body.comment);
+
+            if (demreq == 200) {
+                res.send({ message: "Se actualizó el estado de la solicitud exitosamente." })
+            }
+            else if (demreq == 405) {
+                res.status(404).json({ message: "No se puede  rechazar la solicitud sin un comentario." });
+            }
+            else {
+                res.status(404).json({ message: "No se pudo cambiar el estado de la solicitud." });
+            }
+        }
+        else if (req.body.type == "demand") {
+            let demandControl = new DemandController();
+            const demanda = await demandControl.setDemandState(req.body.id, req.body.state, req.body.comment);
+
+            if (demanda == 200) {
+                res.send({ message: "Se actualizó el estado de la demanda exitosamente." })
+            }
+            else if (demreq == 405) {
+                res.status(404).json({ message: "No se puede  rechazar la demanda sin un comentario." });
+            }
+            else {
+                res.status(404).json({ message: "No se pudo cambiar el estado de la demanda." });
+            }
+        }
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al acceder a la solicitud o demanda." });
     }
 });
 

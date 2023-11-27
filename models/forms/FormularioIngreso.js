@@ -24,6 +24,9 @@ export const FormularioIngreso = sequelize.define(
         pdf_path: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        comentario: {
+            type: DataTypes.STRING
         }
     },
     {
