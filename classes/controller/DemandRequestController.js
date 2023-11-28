@@ -87,7 +87,7 @@ export class DemandRequestController {
         });
 
         if (demreq) {
-            if (state == 3) {
+            if (state == 4) {
                 if (comment && comment.trim()) {
                     demreq.comentario = comment;
                     demreq.estadoDemandaId = state;
