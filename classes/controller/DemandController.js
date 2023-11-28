@@ -186,7 +186,7 @@ export class DemandController {
         });
 
         if (demanda) {
-            if (state == 3) {
+            if (state == 4) {
                 if (comment && comment.trim()) {
                     demanda.comentario = comment;
                     demanda.estadoDemandaId = state;
