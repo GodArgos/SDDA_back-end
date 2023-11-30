@@ -63,7 +63,8 @@ export class UserController {
                     correo: NaturalPerson.email,
                     direccion: NaturalPerson.address,
                     sexoId: NaturalPerson.sex,
-                    expedienteId: userExpedient.id
+                    expedienteId: userExpedient.id,
+                    tipo: 0
                 });
 
                 // Y retorna 1
