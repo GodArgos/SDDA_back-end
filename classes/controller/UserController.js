@@ -42,7 +42,7 @@ export class UserController {
             }
         });
 
-        if (checkPerson.length == 0 && checkJudge.length == 0 && checkSecretary.length == 0) {
+        if (!checkPerson && !checkJudge && !checkSecretary) {
             const maxIdResultUser = await PersonaNatural.max("id");
             const nextIdUser = (maxIdResultUser || 0) + 1; // Calcula el próximo ID
 
