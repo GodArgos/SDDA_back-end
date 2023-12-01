@@ -80,6 +80,7 @@ export class UserController {
         }
     }
 
+
     async createDefendant(defendantDNI) {
         // Ver si existe un usuario igual
         const checkDef = await Demandado.findOne({
@@ -120,7 +121,7 @@ export class UserController {
         else {
             return checkDef.id;
         }
-
+        
     }
 
     async searchUser(_type, _username, _password) {
@@ -277,3 +278,4 @@ export class UserController {
         }
     }
 }
+
