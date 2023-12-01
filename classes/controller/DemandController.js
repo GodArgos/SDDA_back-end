@@ -62,11 +62,14 @@ export class DemandController {
         }
     }
 
-    async getAllDemandsFilter(state) {
-        const demandas = await Demanda.findAll({
+    async getAllDemandsFilter(state, _juezId) {
+        let demandas = await Demanda.findAll({
             where: {
                 estadoDemandaId: {
                     [Op.eq]: state
+                },
+                juezId: {
+                    [Op.eq]: _juezId
                 }
             },
             include: [

@@ -410,7 +410,7 @@ app.post("/set-demand-date", async (req, res) => {
 app.post("/get-all-demands-filter", async (req, res) => {
     try {
         let demandControl = new DemandController();
-        const demandas = await demandControl.getAllDemandsFilter(req.body.state);
+        const demandas = await demandControl.getAllDemandsFilter(req.body.state, req.body.judgeId);
 
         if (demandas) {
             res.send(demandas);
